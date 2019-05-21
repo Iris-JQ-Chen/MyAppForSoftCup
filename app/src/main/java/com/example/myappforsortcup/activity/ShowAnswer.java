@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +29,19 @@ public class ShowAnswer extends AppCompatActivity {
         setContentView(R.layout.activity_show_answer);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar_on_show_answer);
-        toolbar.setLogo(getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Toast.makeText(ShowAnswer.this,"sdfjsld",Toast.LENGTH_SHORT).show();
+            }
+        });
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+
 
         Intent intent = getIntent();
         int id = intent.getIntExtra(ANSWER_ID,-1);
@@ -57,5 +69,15 @@ public class ShowAnswer extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Toast.makeText(ShowAnswer.this,"sldifjs",Toast.LENGTH_SHORT);
+                break;
+        }
+        return true;
     }
 }

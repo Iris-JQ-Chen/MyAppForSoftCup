@@ -50,7 +50,11 @@ public class SearchActivity extends AppCompatActivity{
         setContentView(R.layout.activity_search);
 
         toolbar = (Toolbar)findViewById(R.id.toolbar_search);
-        toolbar.setLogo(getDrawable(R.drawable.ic_drawer_white_24dp));
+//        toolbar.setLogo(getDrawable(R.drawable.ic_drawer_white_24dp));
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         initDrawer();
         initAnswerBriefLists();
         initRecyclerRelate();
