@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/faboptions_like"
+        android:icon="@drawable/ic_thumb_up_black_48dp"
+        android:title="Like"/>
+
+    <!--<item-->
+        <!--android:id="@+id/faboptions_textsms"-->
+        <!--android:icon="@drawable/ic_textsms"-->
+        <!--android:title="Message" />-->
+
+    <!--<item-->
+        <!--android:id="@+id/faboptions_download"-->
+        <!--android:icon="@drawable/ic_file_download"-->
+        <!--android:title="Download" />-->
+
+
+    <item
+        android:id="@+id/faboptions_collect"
+        android:icon="@drawable/ic_collections_bookmark_black_48dp"
+        android:title="Collection" />
+
+</menu>

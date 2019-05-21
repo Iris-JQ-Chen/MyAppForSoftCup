@@ -2,12 +2,17 @@ package com.example.myappforsortcup.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.adapter.AdapterOnSearch;
+import com.example.myappforsortcup.bean.AnswerBrief;
+import com.example.myappforsortcup.util.SomeUtil;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -23,17 +28,45 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
-public class SearchActivity extends AppCompatActivity {
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-    Drawer drawer = null;
-    IProfile profile = null;
-    AccountHeader header = null;
+public class SearchActivity extends AppCompatActivity{
+
+    private Drawer drawer = null;
+    private IProfile profile = null;
+    private AccountHeader header = null;
+    private Toolbar toolbar = null;
+
+    private List<AnswerBrief> answerBriefList = new ArrayList<AnswerBrief>();
+    private RecyclerView recyclerViewOnSearch = null;
+    private AdapterOnSearch  adapterOnSearch = null;
+    private RecyclerView.LayoutManager layoutManager = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        toolbar = (Toolbar)findViewById(R.id.toolbar_search);
+        toolbar.setLogo(getDrawable(R.drawable.ic_drawer_white_24dp));
+        initDrawer();
+        initAnswerBriefLists();
+        initRecyclerRelate();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //handle the back press :D close the drawer first and if the drawer is closed close the activity
+        if (drawer != null && drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void initDrawer(){
         profile = new ProfileDrawerItem()
                 .withName(getResources().getString(R.string.username))
                 .withEmail(getResources().getString(R.string.useremail))
@@ -57,12 +90,14 @@ public class SearchActivity extends AppCompatActivity {
                         return true;
                     }
                 })
-                .withSavedInstance(savedInstanceState)
+//                .withSavedInstance(savedInstanceState)
                 .build();
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withAccountHeader(header)
-                .withToolbar((Toolbar)findViewById(R.id.toolbar_search))
+//                .withToolbar((Toolbar)findViewById(R.id.toolbar_search))
+                .withTranslucentStatusBar(false)
+                .withActionBarDrawerToggle(false)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
                                 .withName(R.string.history_on_drawer)
@@ -83,12 +118,22 @@ public class SearchActivity extends AppCompatActivity {
                                 .withIcon(R.drawable.ic_language_black_48dp)
                                 .withIdentifier(3)
                                 .withCheckable(false)
-                                .withOnCheckedChangeListener(checkedChangeListener),
+                                .withOnCheckedChangeListener(new OnCheckedChangeListener() {
+                                    @Override
+                                    public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+                                        Toast.makeText(SearchActivity.this,"3"+isChecked,Toast.LENGTH_SHORT).show();
+                                    }
+                                }),
                         new SwitchDrawerItem()
                                 .withName(R.string.change_theme_color_on_drawer)
                                 .withIcon(R.drawable.ic_invert_colors_black_48dp)
                                 .withIdentifier(4)
-                                .withOnCheckedChangeListener(checkedChangeListener)
+                                .withOnCheckedChangeListener(new OnCheckedChangeListener() {
+                                    @Override
+                                    public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+                                        Toast.makeText(SearchActivity.this,"4"+isChecked,Toast.LENGTH_SHORT).show();
+                                    }
+                                })
                                 .withChecked(true)  //设置默认为ON状态
                                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                     @Override
@@ -96,30 +141,24 @@ public class SearchActivity extends AppCompatActivity {
                                         //监听方法实现
                                         Toast.makeText(SearchActivity.this,"The DrawerItem is clicked",Toast.LENGTH_SHORT).show();
                                         return false;
-                                        }
+                                    }
                                 })
                 ).build();
     }
 
-
-
-    private OnCheckedChangeListener checkedChangeListener = new OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-            if(drawerItem instanceof Nameable) {
-                Toast.makeText(SearchActivity.this,((Nameable)drawerItem).getName() + "'s check is" + isChecked,Toast.LENGTH_SHORT).show();
-            }
+    private void initAnswerBriefLists(){
+        for (int i = 0;i < 50; i++){
+            answerBriefList.add(new AnswerBrief(i+1,"问题标题"+i, SomeUtil.RandomDoubleString("回答简略内容"+i,70),"来源"+i,new Date(20L)));
         }
-    };
+    }
 
-    @Override
-    public void onBackPressed() {
-        //handle the back press :D close the drawer first and if the drawer is closed close the activity
-        if (drawer != null && drawer.isDrawerOpen()) {
-            drawer.closeDrawer();
-        } else {
-            super.onBackPressed();
-        }
+    private void initRecyclerRelate(){
+        recyclerViewOnSearch = (RecyclerView)findViewById(R.id.recycler_view_on_search);
+        layoutManager = new LinearLayoutManager(this);
+        adapterOnSearch = new AdapterOnSearch(answerBriefList);
+
+        recyclerViewOnSearch.setLayoutManager(layoutManager);
+        recyclerViewOnSearch.setAdapter(adapterOnSearch);
     }
 
 }

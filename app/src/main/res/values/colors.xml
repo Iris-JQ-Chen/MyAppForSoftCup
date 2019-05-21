@@ -5,7 +5,7 @@
     <!--<color name="colorAccent">#FF4081</color>-->
 
 
-    <color name="colorPrimary">@color/primaryColor</color>
+    <color name="colorPrimary">@color/primaryDarkColor</color>
     <!--<color name="colorPrimary">#000</color>-->
     <color name="colorPrimaryDark">@color/primaryColor</color>
     <!--<color name="colorPrimaryDark">#000</color>-->
@@ -20,17 +20,22 @@
     <color name="secondaryLightColor">#ffb2ff</color>
     <color name="secondaryDarkColor">#b64fc8</color>
     <color name="primaryTextColor">#ffffff</color>
+    <color name="primaryContrastColor">#ffe57f</color>
+    <color name="primartAnotherColor">#ede7f6</color>
     <color name="secondaryTextColor">#4a148c</color>
 
 
-    <color name="material_drawer_background">@color/md_white_1000</color>
-    <color name="material_drawer_primary_text">@color/md_grey_800</color>
-    <color name="material_drawer_secondary_text">@color/md_grey_800</color>
-    <color name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</color>
-    <color name="material_drawer_divider">@color/md_grey_600</color>
-    <color name="material_drawer_selected">@color/colorAccent</color>     <!--!!!!!!-->
-    <color name="material_drawer_selected_text">@color/md_white_1000</color>
-    <color name="material_drawer_header_selection_text">@color/material_drawer_dark_primary_text
-    </color>
+
+
+
+    <!--<color name="material_drawer_background">@color/md_white_1000</color>-->
+    <!--<color name="material_drawer_primary_text">@color/md_grey_800</color>-->
+    <!--<color name="material_drawer_secondary_text">@color/md_grey_800</color>-->
+    <!--<color name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</color>-->
+    <!--<color name="material_drawer_divider">@color/md_grey_600</color>-->
+    <!--<color name="material_drawer_selected">@color/colorAccent</color>     &lt;!&ndash;!!!!!!&ndash;&gt;-->
+    <!--<color name="material_drawer_selected_text">@color/md_white_1000</color>-->
+    <!--<color name="material_drawer_header_selection_text">@color/material_drawer_dark_primary_text-->
+    <!--</color>-->
 
 </resources>

@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".activity.MainActivity">
-        </activity>
-        <activity android:name=".activity.SearchActivity"
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity
+            android:name=".activity.SearchActivity"
             android:label="@string/search_activity"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
@@ -20,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ShowAnswer"
+            android:label=""></activity>
     </application>
 
 </manifest>

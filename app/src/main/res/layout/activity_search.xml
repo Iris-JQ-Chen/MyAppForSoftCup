@@ -17,7 +17,60 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_below="@+id/toolbar_search">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="8dp">
+                <EditText
+                    android:id="@+id/input_on_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/interval1_on_search"/>
+                <LinearLayout
+                    android:id="@+id/interval1_on_search"
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:layout_toLeftOf="@+id/search_on_search"
+                    android:orientation="vertical"></LinearLayout>
+                <ImageView
+                    android:id="@+id/search_on_search"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/interval2_on_search"
+                    android:src="@drawable/ic_search_black_48dp"/>
+                <LinearLayout
+                    android:id="@+id/interval2_on_search"
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:layout_toLeftOf="@+id/voice_on_search"
+                    android:orientation="vertical"></LinearLayout>
+                <ImageView
+                    android:id="@+id/voice_on_search"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_keyboard_voice_black_48dp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_on_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
 
     </LinearLayout>
 
