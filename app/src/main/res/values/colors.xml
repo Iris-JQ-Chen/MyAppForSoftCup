@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+
+    <color name="colorPrimary">@color/primaryColor</color>
+    <!--<color name="colorPrimary">#000</color>-->
+    <color name="colorPrimaryDark">@color/primaryColor</color>
+    <!--<color name="colorPrimaryDark">#000</color>-->
+    <color name="colorAccent">@color/secondaryColor</color>
+    <!--<color name="colorAccent">#000</color>-->
+
+
+    <color name="primaryColor">#aa00ff</color>
+    <color name="primaryLightColor">#e254ff</color>
+    <color name="primaryDarkColor">#7200ca</color>
+    <color name="secondaryColor">#ea80fc</color>
+    <color name="secondaryLightColor">#ffb2ff</color>
+    <color name="secondaryDarkColor">#b64fc8</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#4a148c</color>
+
+
+    <color name="material_drawer_background">@color/md_white_1000</color>
+    <color name="material_drawer_primary_text">@color/md_grey_800</color>
+    <color name="material_drawer_secondary_text">@color/md_grey_800</color>
+    <color name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</color>
+    <color name="material_drawer_divider">@color/md_grey_600</color>
+    <color name="material_drawer_selected">@color/colorAccent</color>     <!--!!!!!!-->
+    <color name="material_drawer_selected_text">@color/md_white_1000</color>
+    <color name="material_drawer_header_selection_text">@color/material_drawer_dark_primary_text
+    </color>
+
 </resources>

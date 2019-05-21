@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">MyAppForSortCup</string>
+    <string name="app_name">中软杯</string>
+
+    <string name="username">用户名</string>
+    <string name="useremail">用户邮箱</string>
+    <string name="search_activity">搜索</string>
+    <string name="setting_on_drawer">设置</string>
+    <string name="change_language_on_drawer">更换语言</string>
+    <string name="change_theme_color_on_drawer">切换到夜间模式</string>
+    <string name="history_on_drawer">历史记录</string>
 </resources>
