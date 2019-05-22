@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -57,6 +59,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         initView();
         initDrawer();
         initRecyclerRelate();
+        setupWindowAnimations();
     }
 
     @Override
@@ -135,20 +138,71 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withAccountHeader(header)
-//                .withToolbar((Toolbar)findViewById(R.id.toolbar_search))
                 .withTranslucentStatusBar(false)
                 .withActionBarDrawerToggle(false)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
-                                .withName(R.string.history_on_drawer)
+                                .withName(R.string.collection_on_drawer)
 //                                .withDescription("This is a user")
-                                .withIcon(R.drawable.ic_history_black_48dp)
+                                .withIcon(R.drawable.ic_collections_bookmark_black_48dp)
                                 .withIdentifier(1)
                                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                     @Override
                                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                                         Toast.makeText(SearchActivity.this,getTitle(),Toast.LENGTH_SHORT).show();
-                                        return false;
+                                        return true;
+                                    }
+                                })
+                                .withSelectable(false),
+                        new PrimaryDrawerItem()
+                                .withName(R.string.history_on_drawer)
+//                                .withDescription("This is a user")
+                                .withIcon(R.drawable.ic_history_black_48dp)
+                                .withIdentifier(2)
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                        Toast.makeText(SearchActivity.this,getTitle(),Toast.LENGTH_SHORT).show();
+                                        return true;
+                                    }
+                                })
+                                .withSelectable(false),
+                        new PrimaryDrawerItem()
+                                .withName(R.string.change_user_name_on_drawer)
+//                                .withDescription("This is a user")
+                                .withIcon(R.drawable.ic_account_circle_black_24dp)
+                                .withIdentifier(3)
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                        Toast.makeText(SearchActivity.this,getTitle(),Toast.LENGTH_SHORT).show();
+                                        return true;
+                                    }
+                                })
+                                .withSelectable(false),
+                        new PrimaryDrawerItem()
+                                .withName(R.string.change_user_password_on_drawer)
+//                                .withDescription("This is a user")
+                                .withIcon(R.drawable.ic_change_password_black_24dp)
+                                .withIdentifier(4)
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                        Toast.makeText(SearchActivity.this,getTitle(),Toast.LENGTH_SHORT).show();
+                                        return true;
+                                    }
+                                })
+                                .withSelectable(false),
+                        new PrimaryDrawerItem()
+                                .withName(R.string.change_user_picture_on_drawer)
+//                                .withDescription("This is a user")
+                                .withIcon(R.drawable.ic_change_portrait_black_24dp)
+                                .withIdentifier(5)
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                        Toast.makeText(SearchActivity.this,getTitle(),Toast.LENGTH_SHORT).show();
+                                        return true;
                                     }
                                 })
                                 .withSelectable(false),
@@ -156,7 +210,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         new SwitchDrawerItem()  //添加带有switch开关的item
                                 .withName(R.string.change_language_on_drawer)
                                 .withIcon(R.drawable.ic_language_black_48dp)
-                                .withIdentifier(3)
+                                .withIdentifier(6)
                                 .withCheckable(false)
                                 .withOnCheckedChangeListener(new OnCheckedChangeListener() {
                                     @Override
@@ -167,7 +221,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         new SwitchDrawerItem()
                                 .withName(R.string.change_theme_color_on_drawer)
                                 .withIcon(R.drawable.ic_invert_colors_black_48dp)
-                                .withIdentifier(4)
+                                .withIdentifier(7)
                                 .withOnCheckedChangeListener(new OnCheckedChangeListener() {
                                     @Override
                                     public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
@@ -199,6 +253,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         recyclerViewOnSearch.setLayoutManager(layoutManager);
         recyclerViewOnSearch.setAdapter(adapterOnSearch);
+    }
+
+    private void setupWindowAnimations(){
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getWindow().setReturnTransition(slide);
+
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);
     }
 
 }

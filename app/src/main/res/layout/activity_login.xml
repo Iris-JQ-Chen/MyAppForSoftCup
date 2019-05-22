@@ -1,200 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <!--<EditText-->
-        <!--android:id="@+id/edit_area"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/btn"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
+        android:id="@+id/sky_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"></RelativeLayout>
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent">
 
-    <android.support.design.widget.CoordinatorLayout
+        <FrameLayout
+            android:id="@+id/plane_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:id="@+id/plane"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/plane_margin"
+                android:rotation="180"
+                android:src="@drawable/ic_send_white_24dp" />
+        </FrameLayout>
+
+        <io.codetail.widget.RevealFrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true">
+            <RelativeLayout
+                android:id="@+id/sent_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded">
+                <ImageView
+                    android:id="@+id/check"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_check_white_24dp" />
+            </RelativeLayout>
+        </io.codetail.widget.RevealFrameLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/inputs_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
         <LinearLayout
-            android:id="@+id/interval3_on_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <RelativeLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"></RelativeLayout>
-            <android.support.v7.widget.CardView
-                android:id="@+id/interval1_on_login"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:layout_centerHorizontal="true"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="8dp">
+                android:layout_weight="2"></RelativeLayout>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <LinearLayout
+                    android:id="@+id/interval3_on_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="14dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="0dp"
-                        android:text="用户名"
-                        android:textSize="20sp" />
+                    android:orientation="horizontal">
                     <RelativeLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></RelativeLayout>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/interval1_on_login"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="8dp">
-                        <EditText
-                            android:id="@+id/input_name_on_login"
+                        android:layout_weight="5"
+                        android:layout_centerHorizontal="true"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="8dp">
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"/>
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/ic_account_circle_black_24dp"/>
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="0dp"
-                        android:text="密码"
-                        android:textSize="20sp" />
+                            android:layout_margin="14dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="0dp"
+                                android:text="用户名"
+                                android:textSize="20sp" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <EditText
+                                    android:id="@+id/input_name_on_login"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="14sp"/>
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_account_circle_black_24dp"/>
+                            </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="0dp"
+                                android:text="密码"
+                                android:textSize="20sp" />
+                            <RelativeLayout
+                                android:id="@+id/interval2_on_login"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="35dp">
+                                <EditText
+                                    android:id="@+id/input_password_on_login"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="14sp"/>
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_account_circle_black_24dp"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
                     <RelativeLayout
-                        android:id="@+id/interval2_on_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="35dp">
-                        <EditText
-                            android:id="@+id/input_password_on_login"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"/>
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/ic_account_circle_black_24dp"/>
-                    </RelativeLayout>
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"></RelativeLayout>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="210dp"
+                    app:layout_anchor="@id/interval3_on_login"
+                    app:layout_anchorGravity="bottom|center">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/interval4_on_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        android:layout_centerHorizontal="true"
+                        app:cardBackgroundColor="@color/secondaryLightColor">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginLeft="64dp"
+                            android:layout_marginRight="64dp">
+                            <TextView
+                                android:id="@+id/login_on_login"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="登录"
+                                android:textSize="24sp"/>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/interval5_on_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/interval4_on_login"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        android:layout_centerHorizontal="true">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginLeft="64dp"
+                            android:layout_marginRight="64dp">
+                            <TextView
+                                android:id="@+id/forget_on_login"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="忘记密码"
+                                android:textSize="24sp"/>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/interval6_on_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/interval5_on_login"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        android:layout_centerHorizontal="true">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginLeft="64dp"
+                            android:layout_marginRight="64dp">
+                            <TextView
+                                android:id="@+id/register_on_login"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="登录"
+                                android:textSize="24sp"/>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </RelativeLayout>
+
+            </android.support.design.widget.CoordinatorLayout>
+
             <RelativeLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"></RelativeLayout>
-        </LinearLayout>        
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
-            app:layout_anchor="@id/interval3_on_login"
-            app:layout_anchorGravity="bottom|center">
-            <android.support.v7.widget.CardView
-                android:id="@+id/interval4_on_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:layout_centerHorizontal="true"
-                app:cardBackgroundColor="@color/secondaryLightColor">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginLeft="64dp"
-                    android:layout_marginRight="64dp">
-                    <TextView
-                        android:id="@+id/login_on_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="登录"
-                        android:textSize="24sp"/>
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/interval5_on_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/interval4_on_login"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:layout_centerHorizontal="true">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginLeft="64dp"
-                    android:layout_marginRight="64dp">
-                    <TextView
-                        android:id="@+id/forget_on_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="忘记密码"
-                        android:textSize="24sp"/>
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/interval6_on_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/interval5_on_login"
-                app:cardCornerRadius="28dp"
-                app:cardElevation="0dp"
-                android:layout_centerHorizontal="true">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginLeft="64dp"
-                    android:layout_marginRight="64dp">
-                    <TextView
-                        android:id="@+id/register_on_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="登录"
-                        android:textSize="24sp"/>
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </RelativeLayout>
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_send_white_24dp" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>
 
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></RelativeLayout>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

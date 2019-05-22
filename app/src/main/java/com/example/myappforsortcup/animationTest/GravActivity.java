@@ -1,4 +1,4 @@
-package com.example.myappforsortcup.activity;
+package com.example.myappforsortcup.animationTest;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.activity.SearchActivity;
 import com.example.myappforsortcup.fragment.GravSampleFragment;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class GravActivity extends AppCompatActivity {
 
