@@ -1,5 +1,10 @@
 package com.example.myappforsortcup.util;
 
+import android.view.View;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.util.Random;
 
 /**
@@ -15,6 +20,17 @@ public class SomeUtil {
             builder.append(s);
         }
         return builder.toString();
+    }
+
+    public static boolean shakeControl(View view){
+        if (view == null){
+            return false;
+        }
+        YoYo.with(Techniques.Shake)
+                .duration(70)
+                .repeat(9)
+                .playOn(view);
+        return true;
     }
 
 }

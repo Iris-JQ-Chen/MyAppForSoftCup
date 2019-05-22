@@ -1,5 +1,6 @@
 package com.example.myappforsortcup.activity;
 
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
@@ -32,7 +34,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity{
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Drawer drawer = null;
     private IProfile profile = null;
@@ -44,20 +46,28 @@ public class SearchActivity extends AppCompatActivity{
     private AdapterOnSearch  adapterOnSearch = null;
     private RecyclerView.LayoutManager layoutManager = null;
 
+    private ImageView searchImage;
+    private ImageView voiceImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_search);
-//        toolbar.setLogo(getDrawable(R.drawable.ic_drawer_white_24dp));
-        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
+        initView();
         initDrawer();
-        initAnswerBriefLists();
         initRecyclerRelate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (answerBriefList.isEmpty() || answerBriefList == null){
+
+        }else {
+            answerBriefList.clear();
+            adapterOnSearch.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -68,6 +78,32 @@ public class SearchActivity extends AppCompatActivity{
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.search_on_search:
+                initAnswerBriefLists();
+                adapterOnSearch.notifyDataSetChanged();
+                break;
+            case R.id.voice_on_search:
+
+                break;
+        }
+    }
+
+    private void initView(){
+        toolbar = (Toolbar)findViewById(R.id.toolbar_search);
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        searchImage = (ImageView)findViewById(R.id.search_on_search);
+        voiceImage = (ImageView)findViewById(R.id.voice_on_search);
+
+        searchImage.setOnClickListener(this);
+        voiceImage.setOnClickListener(this);
     }
 
     private void initDrawer(){

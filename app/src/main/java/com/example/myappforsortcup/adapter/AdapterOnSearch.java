@@ -66,7 +66,6 @@ public class AdapterOnSearch extends RecyclerView.Adapter<AdapterOnSearch.ViewHo
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("SoftCup","点击事件");
                 if (mContext == null){
                     Log.d("SoftCup","mcontext为空");
                 }
