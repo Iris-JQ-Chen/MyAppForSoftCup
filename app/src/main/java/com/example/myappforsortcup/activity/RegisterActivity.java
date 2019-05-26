@@ -111,6 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putString(LoginActivity.user_Name,inputName.getText().toString());
             editor.putString(LoginActivity.user_Password,inputPassword.getText().toString());
             editor.putString(LoginActivity.user_Email,inputEmail.getText().toString());
+            editor.commit();
             send();
         }
     }

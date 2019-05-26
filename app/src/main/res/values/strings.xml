@@ -5,10 +5,13 @@
     <string name="useremail">用户邮箱</string>
     <string name="search_activity">搜索</string>
     <string name="setting_on_drawer">设置</string>
+    <string name="other_on_drawer">其他</string>
     <string name="change_language_on_drawer">更换语言</string>
+    <string name="login_out_on_drawer">退出登录</string>
     <string name="change_theme_color_on_drawer">切换到夜间模式</string>
     <string name="collection_on_drawer">收藏夹</string>
     <string name="history_on_drawer">历史记录</string>
+    <string name="change_info_on_drawer">修改个人信息</string>
     <string name="change_user_name_on_drawer">更改姓名</string>
     <string name="change_user_password_on_drawer">更改密码</string>
     <string name="change_user_picture_on_drawer">更换头像</string>
