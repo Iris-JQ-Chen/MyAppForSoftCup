@@ -1,4 +1,4 @@
-package com.example.myappforsortcup.animationTest;
+package com.example.myappforsortcup.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -23,17 +23,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
-import com.example.myappforsortcup.activity.RegisterActivity;
 import com.example.myappforsortcup.activity.SearchActivity;
+import com.example.myappforsortcup.animationTest.LoginActivity;
 import com.example.myappforsortcup.util.SomeUtil;
 import com.jaouan.revealator.Revealator;
 import com.jaouan.revealator.animations.AnimationListenerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     @BindView(R.id.fab) View mFab;
     @BindView(R.id.plane) View mPlaneImageView;
@@ -43,63 +46,73 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.sent_layout) View mSentLayout;
     @BindView(R.id.check) View mCheckImageView;
 
-    @BindView(R.id.input_name_on_login) EditText inputName;
-    @BindView(R.id.input_password_on_login)EditText inputPassword;
-//    @BindView(R.id.login_on_login)TextView btnLogin;
-//    @BindView(R.id.register_on_login)LinearLayout btnRegister;
-//    @BindView(R.id.forget_on_login)TextView btnForget;
+    @BindView(R.id.input_name_on_register) EditText inputName;
+    @BindView(R.id.input_password_on_register)EditText inputPassword;
+    @BindView(R.id.input_email_on_register)EditText inputEmail;
+//    @BindView(R.id.login_on_register)TextView btnLogin;
+//    @BindView(R.id.register_on_register)LinearLayout btnRegister;
 
     private Intent intent = null;
-
-    public static final String prefs_File = "user";
-    public static final String is_Register = "isRegister";
-    public static final String user_Name = "userName";
-    public static final String user_Password = "userPassword";
-    public static final String user_Email = "userEmail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
         initUserInfo();
-        intent = new Intent(LoginActivity.this,SearchActivity.class);
+        intent = new Intent(RegisterActivity.this,SearchActivity.class);
         setupWindowAnimations();
     }
 
-    @OnClick(R.id.login_on_login)
+    @OnClick(R.id.login_on_register)
     void login(){
-        String name = inputName.getText().toString();
-        String password = inputPassword.getText().toString();
-        if (name.equals("") && password.equals("")){
-            SomeUtil.shakeControl(inputName);
-            SomeUtil.shakeControl(inputPassword);
-        }else if (name.equals("") && !password.equals("")){
-            SomeUtil.shakeControl(inputName);
-        }else if (!name.equals("") && password.equals("")){
-            SomeUtil.shakeControl(inputPassword);
-        }else {
-            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(LoginActivity.is_Register,true);
-            editor.putString(LoginActivity.user_Name,name);
-            editor.putString(LoginActivity.user_Password,password);
-            editor.commit();
-            send();
-        }
-    }
-
-    @OnClick(R.id.register_on_login)
-    void register(){
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
-    @OnClick(R.id.forget_on_login)
-    void ForgetPassword(){
-
+    @OnClick(R.id.register_on_register)
+    void register(){
+//        String name = inputName.getText().toString();
+//        String password = inputPassword.getText().toString();
+//        String email = inputEmail.getText().toString();
+//        List<String> list = new ArrayList<>();
+//        list.add(name);
+//        list.add(password);
+//        list.add(email);
+//
+//        if (name.equals("") && password.equals("")){
+//            SomeUtil.shakeControl(inputName);
+//            SomeUtil.shakeControl(inputPassword);
+//        }else if (name.equals("") && !password.equals("")){
+//            SomeUtil.shakeControl(inputName);
+//        }else if (!name.equals("") && password.equals("")){
+//            SomeUtil.shakeControl(inputPassword);
+//        }else {
+//            //网络
+//            send();
+//        }
+        boolean isEmpty = false;
+        List<EditText> list = new ArrayList<>();
+        list.add(inputName);
+        list.add(inputPassword);
+        list.add(inputEmail);
+        for (EditText e: list){
+            if (e.getText().toString().equals("")){
+                SomeUtil.shakeControl(e);
+                isEmpty = true;
+            }
+        }
+        if (!isEmpty){
+            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(LoginActivity.is_Register,true);
+            editor.putString(LoginActivity.user_Name,inputName.getText().toString());
+            editor.putString(LoginActivity.user_Password,inputPassword.getText().toString());
+            editor.putString(LoginActivity.user_Email,inputEmail.getText().toString());
+            send();
+        }
     }
 
     @OnClick(R.id.fab)

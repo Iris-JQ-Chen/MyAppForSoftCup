@@ -24,17 +24,32 @@
     <!--<color name="primartAnotherColor">#ede7f6</color>-->
     <!--<color name="secondaryTextColor">#4a148c</color>-->
 
-    <color name="primaryColor">#9661c8</color>
-    <color name="primaryLightColor">#fdc1ff</color>
-    <color name="primaryDarkColor">#c990fc</color>
-    <color name="secondaryColor">#f1a6fc</color>
-    <color name="secondaryLightColor">#ffd8ff</color>
-    <color name="secondaryDarkColor">#bd76c9</color>
-    <color name="primaryTextColor">#481268</color>
-    <color name="secondaryTextColor">#641884</color>
-    <color name="subPrimartColor">#e0f7fa</color>
-    <color name="subSecondColor">#ede7f6</color>
-    <color name="subThirdColor">#fce4ec</color>
+    <!--<color name="primaryColor">#9661c8</color>-->
+    <!--<color name="primaryLightColor">#fdc1ff</color>-->
+    <!--<color name="primaryDarkColor">#c990fc</color>-->
+    <!--<color name="secondaryColor">#f1a6fc</color>-->
+    <!--<color name="secondaryLightColor">#ffd8ff</color>-->
+    <!--<color name="secondaryDarkColor">#bd76c9</color>-->
+    <!--<color name="primaryTextColor">#481268</color>-->
+    <!--<color name="secondaryTextColor">#641884</color>-->
+    <!--<color name="subPrimartColor">#e0f7fa</color>-->
+    <!--<color name="subSecondColor">#ede7f6</color>-->
+    <!--<color name="subThirdColor">#fce4ec</color>-->
+
+
+    <color name="primaryColor">#bf360c</color>
+    <color name="primaryLightColor">#f9683a</color>
+    <color name="primaryDarkColor">#870000</color>
+    <color name="secondaryColor">#f44336</color>
+    <color name="secondaryLightColor">#ff7961</color>
+    <color name="secondaryDarkColor">#ba000d</color>
+    <color name="primaryTextColor">#fbe9e7</color>
+    <color name="secondaryTextColor">#560a0a</color>
+    <color name="subPrimartColor">#ffe57f</color>
+    <color name="subSecondColor">#ffcdd2</color>
+    <color name="subThirdColor">#e6ee9c</color>
+
+
 
 
 

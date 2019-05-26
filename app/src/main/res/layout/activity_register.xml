@@ -60,13 +60,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"></RelativeLayout>
+                android:layout_weight="1.2"></RelativeLayout>
             <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/interval3_on_login"
+                    android:id="@+id/interval3_on_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -104,7 +104,35 @@
                                 android:layout_marginRight="8dp"
                                 android:layout_marginBottom="8dp">
                                 <EditText
-                                    android:id="@+id/input_name_on_login"
+                                    android:id="@+id/input_name_on_register"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"/>
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_account_circle_black_24dp"/>
+                            </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="0dp"
+                                android:text="邮箱"
+                                android:textSize="16sp" />
+                            <RelativeLayout
+                                android:id="@+id/interval2_on_register"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <EditText
+                                    android:id="@+id/input_email_on_register"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="12sp"/>
@@ -124,7 +152,7 @@
                                 android:text="密码"
                                 android:textSize="16sp" />
                             <RelativeLayout
-                                android:id="@+id/interval2_on_login"
+                                android:id="@+id/interval6_on_register"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="0dp"
@@ -132,11 +160,11 @@
                                 android:layout_marginRight="8dp"
                                 android:layout_marginBottom="35dp">
                                 <EditText
-                                    android:id="@+id/input_password_on_login"
+                                    android:id="@+id/input_password_on_register"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
-                                    android:inputType="textPassword"/>
+                                    android:inputType="textPassword"
+                                    android:textSize="12sp"/>
                                 <ImageView
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
@@ -155,43 +183,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="210dp"
-                    app:layout_anchor="@id/interval3_on_login"
+                    android:layout_marginTop="280dp"
+                    app:layout_anchor="@id/interval3_on_register"
                     app:layout_anchorGravity="bottom|center">
                     <LinearLayout
-                        android:id="@+id/interval4_on_login"
+                        android:id="@+id/interval4_on_register"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:layout_centerHorizontal="true">
                         <RelativeLayout
-                            android:id="@+id/login_on_login"
+                            android:id="@+id/register_on_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingTop="9dp"
-                            android:paddingBottom="9dp"
-                            android:paddingLeft="54dp"
-                            android:paddingRight="54dp"
-                            android:background="@drawable/btn_login">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:text="登录"
-                                android:textSize="17sp"/>
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/interval5_on_login"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:layout_below="@+id/interval4_on_login"
-                        android:layout_centerHorizontal="true">
-                        <RelativeLayout
-                            android:id="@+id/register_on_login"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:paddingTop="9dp"
                             android:paddingBottom="9dp"
                             android:paddingLeft="54dp"
@@ -206,25 +210,26 @@
                         </RelativeLayout>
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/interval6_on_login"
+                        android:id="@+id/interval5_on_register"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/interval5_on_login"
+                        android:layout_marginBottom="15dp"
+                        android:layout_below="@+id/interval4_on_register"
                         android:layout_centerHorizontal="true">
                         <RelativeLayout
-                            android:id="@+id/forget_on_login"
+                            android:id="@+id/login_on_register"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:paddingTop="9dp"
                             android:paddingBottom="9dp"
-                            android:paddingLeft="44dp"
-                            android:paddingRight="44dp"
+                            android:paddingLeft="54dp"
+                            android:paddingRight="54dp"
                             android:background="@drawable/btn_login">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
-                                android:text="忘记密码"
+                                android:text="登录"
                                 android:textSize="17sp"/>
                         </RelativeLayout>
                     </LinearLayout>
