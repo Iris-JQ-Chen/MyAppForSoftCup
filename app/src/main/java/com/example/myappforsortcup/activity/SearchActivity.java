@@ -47,13 +47,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private AccountHeader header = null;
     private Toolbar toolbar = null;
 
-    private List<AnswerBrief> answerBriefList = new ArrayList<AnswerBrief>();
-    private RecyclerView recyclerViewOnSearch = null;
-    private AdapterOnSearch  adapterOnSearch = null;
-    private RecyclerView.LayoutManager layoutManager = null;
+//    private List<AnswerBrief> answerBriefList = new ArrayList<AnswerBrief>();
+//    private RecyclerView recyclerViewOnSearch = null;
+//    private AdapterOnSearch  adapterOnSearch = null;
+//    private RecyclerView.LayoutManager layoutManager = null;
 
-    private ImageView searchImage;
-    private ImageView voiceImage;
+//    private ImageView searchImage;
+//    private ImageView voiceImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,20 +62,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         initView();
         initDrawer();
-        initRecyclerRelate();
+//        initRecyclerRelate();
         setupWindowAnimations();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (answerBriefList.isEmpty() || answerBriefList == null){
-
-        }else {
-            answerBriefList.clear();
-            adapterOnSearch.notifyDataSetChanged();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (answerBriefList.isEmpty() || answerBriefList == null){
+//
+//        }else {
+//            answerBriefList.clear();
+//            adapterOnSearch.notifyDataSetChanged();
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
@@ -91,9 +91,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.search_on_search:
-                initAnswerBriefLists();
-                adapterOnSearch.notifyDataSetChanged();
-                break;
+//                initAnswerBriefLists();
+//                adapterOnSearch.notifyDataSetChanged();
+//                break;
             case R.id.voice_on_search:
 
                 break;
@@ -106,11 +106,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        searchImage = (ImageView)findViewById(R.id.search_on_search);
-        voiceImage = (ImageView)findViewById(R.id.voice_on_search);
-
-        searchImage.setOnClickListener(this);
-        voiceImage.setOnClickListener(this);
+//        searchImage = (ImageView)findViewById(R.id.search_on_search);
+//        voiceImage = (ImageView)findViewById(R.id.voice_on_search);
+//
+//        searchImage.setOnClickListener(this);
+//        voiceImage.setOnClickListener(this);
     }
 
     private void initDrawer(){
@@ -246,21 +246,21 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                             })
                 ).build();
     }
+//
+//    private void initAnswerBriefLists(){
+//        for (int i = 0;i < 50; i++){
+//            answerBriefList.add(new AnswerBrief(i+1,"问题标题"+i, SomeUtil.RandomDoubleString("回答简略内容"+i,70),"来源"+i,new Date(20L)));
+//        }
+//    }
 
-    private void initAnswerBriefLists(){
-        for (int i = 0;i < 50; i++){
-            answerBriefList.add(new AnswerBrief(i+1,"问题标题"+i, SomeUtil.RandomDoubleString("回答简略内容"+i,70),"来源"+i,new Date(20L)));
-        }
-    }
-
-    private void initRecyclerRelate(){
-        recyclerViewOnSearch = (RecyclerView)findViewById(R.id.recycler_view_on_search);
-        layoutManager = new LinearLayoutManager(this);
-        adapterOnSearch = new AdapterOnSearch(answerBriefList);
-
-        recyclerViewOnSearch.setLayoutManager(layoutManager);
-        recyclerViewOnSearch.setAdapter(adapterOnSearch);
-    }
+//    private void initRecyclerRelate(){
+//        recyclerViewOnSearch = (RecyclerView)findViewById(R.id.recycler_view_on_search);
+//        layoutManager = new LinearLayoutManager(this);
+//        adapterOnSearch = new AdapterOnSearch(answerBriefList);
+//
+//        recyclerViewOnSearch.setLayoutManager(layoutManager);
+//        recyclerViewOnSearch.setAdapter(adapterOnSearch);
+//    }
 
     private void setupWindowAnimations(){
         Slide slide = new Slide();
