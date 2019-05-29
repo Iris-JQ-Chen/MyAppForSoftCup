@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.activity.MainActivity;
 import com.example.myappforsortcup.activity.RegisterActivity;
 import com.example.myappforsortcup.activity.SearchActivity;
 import com.example.myappforsortcup.util.SomeUtil;
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initUserInfo();
-        intent = new Intent(LoginActivity.this,SearchActivity.class);
+        intent = new Intent(LoginActivity.this,MainActivity.class);
         setupWindowAnimations();
     }
 

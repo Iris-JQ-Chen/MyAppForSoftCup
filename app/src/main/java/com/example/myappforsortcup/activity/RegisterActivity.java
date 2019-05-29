@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initUserInfo();
-        intent = new Intent(RegisterActivity.this,SearchActivity.class);
+        intent = new Intent(RegisterActivity.this,MainActivity.class);
         setupWindowAnimations();
     }
 
