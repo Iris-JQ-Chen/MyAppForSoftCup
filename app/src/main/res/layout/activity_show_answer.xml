@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_on_show_answer"
         android:layout_width="match_parent"
@@ -13,12 +12,11 @@
         android:background="@color/primaryDarkColor"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:theme="@style/ThemeOverlay.AppCompat.Light" />
-
-    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
+        <!--三个小书签-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -88,6 +86,7 @@
             </RelativeLayout>
         </LinearLayout>
 
+        <!--诊断与排除-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -96,42 +95,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"></RelativeLayout>
-            <android.support.v7.widget.CardView
+            <ViewFlipper
+                android:id="@+id/view_flipper_on_show"
                 android:layout_width="match_parent"
-                android:layout_height="330dp"
-                android:layout_margin="14dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"></RelativeLayout>
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="6"
-                        android:layout_margin="8dp">
-                        <TextView
-                            android:id="@+id/detail_content_on_answer"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:textSize="14sp"/>
-                    </ScrollView>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.3"></RelativeLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+                android:layout_height="330dp">
+            </ViewFlipper>
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_margin="14dp">-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="1"></RelativeLayout>-->
+                    <!--<ScrollView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="6"-->
+                        <!--android:layout_margin="8dp">-->
+                        <!--<TextView-->
+                            <!--android:id="@+id/detail_content_on_answer"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_margin="8dp"-->
+                            <!--android:textSize="14sp"/>-->
+                    <!--</ScrollView>-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="0.3"></RelativeLayout>-->
+                <!--</LinearLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"></RelativeLayout>
         </LinearLayout>
 
+        <!--标题-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -169,5 +174,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
 </LinearLayout>

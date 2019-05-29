@@ -6,16 +6,15 @@
         android:icon="@drawable/ic_thumb_up_black_48dp"
         android:title="Like"/>
 
-    <!--<item-->
-        <!--android:id="@+id/faboptions_textsms"-->
-        <!--android:icon="@drawable/ic_textsms"-->
-        <!--android:title="Message" />-->
+    <item
+        android:id="@+id/faboptions_un_like"
+        android:icon="@drawable/ic_thumb_down_black_24dp"
+        android:title="UnLike" />
 
-    <!--<item-->
-        <!--android:id="@+id/faboptions_download"-->
-        <!--android:icon="@drawable/ic_file_download"-->
-        <!--android:title="Download" />-->
-
+    <item
+        android:id="@+id/faboptions_thank"
+        android:icon="@drawable/ic_favorite_border_black_48dp"
+        android:title="Download" />
 
     <item
         android:id="@+id/faboptions_collect"

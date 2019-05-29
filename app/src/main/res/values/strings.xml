@@ -16,8 +16,11 @@
     <string name="change_user_password_on_drawer">更改密码</string>
     <string name="change_user_picture_on_drawer">更换头像</string>
     <string name="favourite">喜爱</string>
-
-    <style name="collection">收藏</style>
+    <string name="collection">收藏</string>
+    <string name="title">标题</string>
+    <string name="briefDescription">简单描述</string>
+    <string name="diagnoseFault">诊断故障</string>
+    <string name="removeFault">排除故障</string>
 
     <string name="circle">
         M527.023,71.8233 C780.213,71.8233,985.464,277.075,985.464,530.265

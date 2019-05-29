@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
         iamges[1].setOnClickListener(this);
 
         detector = new GestureDetector(this);
-        flipper = (ViewFlipper) this.findViewById(R.id.ViewFlipper1);
+        flipper = (ViewFlipper) this.findViewById(R.id.view_flipper_on_main);
         flipper.addView(LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main_by_key,null,false));
         flipper.addView(LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main_by_description,null,false));
 
