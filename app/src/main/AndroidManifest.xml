@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.SearchActivity"
             android:label="@string/search_activity"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".activity.ShowAnswer"
-            android:label=""/>
+            android:label="" />
         <activity android:name=".animationTest.GravActivity" />
         <activity android:name=".animationTest.LoginActivity">
             <intent-filter>
@@ -29,8 +29,8 @@
         <activity android:name=".activity.CollectionActivity" />
         <activity android:name=".activity.HistoryActivity" />
         <activity android:name=".activity.ChangeInfoActivity" />
-        <activity android:name=".activity.ForgetPwActivity" >
-        </activity>
+        <activity android:name=".activity.ForgetPwActivity"></activity>
+        <activity android:name=".activity.AnswerListsActivity"></activity>
     </application>
 
 </manifest>

@@ -55,6 +55,7 @@ dependencies {
     compile 'com.quinny898.library.persistentsearch:library:1.1.0-SNAPSHOT'
     compile 'com.github.jaouan:revealator:1.2.0'
     compile 'com.jph.takephoto:takephoto_library:4.0.3'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.6'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

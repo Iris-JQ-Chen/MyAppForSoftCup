@@ -60,10 +60,11 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
 
     }
 
-
     private void initView(){
         toolbar = (Toolbar)findViewById(R.id.toolbar_main);
         toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
+
+        findViewById(R.id.search_btn_on_main).setOnClickListener(this);
 
         iamges[0]=(ImageView) findViewById(R.id.image_key_on_main);
         iamges[1]=(ImageView) findViewById(R.id.image_description_on_main);
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
-
 
     private void initDrawer(){
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
@@ -309,29 +309,9 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         if (e1.getX() - e2.getX() > 120) {
-//            if (i < 1) {
-//                i++;
-//                setImage(i);
-//                this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,
-//                        R.anim.animation_right_in));
-//                this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,
-//                        R.anim.animation_left_out));
-//                this.flipper.showNext();
-//            }
-//            return true;
             changeSearchCard(1);
         }
         else if (e1.getX() - e2.getX() < -120) {
-//            if (i > 0) {
-//                i--;
-//                setImage(i);
-//                this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,
-//                        R.anim.animation_left_in));
-//                this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,
-//                        R.anim.animation_right_out));
-//                this.flipper.showPrevious();
-//            }
-//            return true;
             changeSearchCard(-1);
         }
         return false;
@@ -340,6 +320,10 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.search_btn_on_main:
+                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
+                startActivity(intent);
+                break;
             case R.id.image_key_on_main:
                 if (i == 1){
                     changeSearchCard(-1);

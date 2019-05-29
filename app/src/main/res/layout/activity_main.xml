@@ -90,6 +90,7 @@
                 app:layout_anchor="@id/interval1_on_main"
                 app:layout_anchorGravity="bottom|center">
                 <RelativeLayout
+                    android:id="@+id/search_btn_on_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="9dp"
