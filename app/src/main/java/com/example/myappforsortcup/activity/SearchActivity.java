@@ -90,13 +90,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.search_on_search:
+//            case R.id.search_on_search:
 //                initAnswerBriefLists();
 //                adapterOnSearch.notifyDataSetChanged();
 //                break;
-            case R.id.voice_on_search:
+//            case R.id.voice_on_search:
 
-                break;
+//                break;
         }
     }
 
@@ -156,7 +156,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 .build();
         drawer = new DrawerBuilder()
                 .withActivity(this)
-//                .withAccountHeader(header)
+                .withAccountHeader(header)
                 .withTranslucentStatusBar(false)
                 .withActionBarDrawerToggle(false)
                 .addDrawerItems(
