@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     private void initView(){
         toolbar = (Toolbar)findViewById(R.id.toolbar_main);
         toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         findViewById(R.id.search_btn_on_main).setOnClickListener(this);
 
@@ -76,8 +78,6 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
         flipper.addView(LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main_by_key,null,false));
         flipper.addView(LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main_by_description,null,false));
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void initDrawer(){

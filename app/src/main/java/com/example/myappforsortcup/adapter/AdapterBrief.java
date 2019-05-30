@@ -2,13 +2,14 @@ package com.example.myappforsortcup.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.activity.ShowAnswer;
@@ -16,17 +17,19 @@ import com.example.myappforsortcup.bean.AnswerBrief;
 
 import java.util.List;
 
+import jp.wasabeef.recyclerview.animators.holder.AnimateViewHolder;
+
 /**
  * Created by 蒲公英之流 on 2019-05-21.
  */
 
-public class AdapterOnSearch extends RecyclerView.Adapter<AdapterOnSearch.ViewHolder> {
+public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> {
 
     private Context mContext = null;
     private List<AnswerBrief> mList = null;
 
-    class ViewHolder extends RecyclerView.ViewHolder{
-        View view;
+    class ViewHolder extends RecyclerView.ViewHolder implements AnimateViewHolder {
+        View itemView;
         TextView title;
         TextView briefDescription;
         TextView sourceWeb;
@@ -34,15 +37,46 @@ public class AdapterOnSearch extends RecyclerView.Adapter<AdapterOnSearch.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
-            view = itemView;
+            this.itemView = itemView;
             title = (TextView)itemView.findViewById(R.id.question_title);
             briefDescription = (TextView)itemView.findViewById(R.id.answer_brief_description);
             sourceWeb = (TextView)itemView.findViewById(R.id.answer_source_web);
             date = (TextView)itemView.findViewById(R.id.answer_date);
         }
+
+        @Override
+        public void preAnimateAddImpl(RecyclerView.ViewHolder viewHolder) {
+
+        }
+
+        @Override
+        public void preAnimateRemoveImpl(RecyclerView.ViewHolder viewHolder) {
+            ViewCompat.setTranslationY(itemView, -itemView.getHeight() * 0.3f);
+            ViewCompat.setAlpha(itemView, 0);
+        }
+
+        @Override
+        public void animateAddImpl(RecyclerView.ViewHolder viewHolder, ViewPropertyAnimatorListener listener) {
+            ViewCompat.animate(itemView)
+                    .translationY(0)
+                    .alpha(1)
+                    .setDuration(300)
+                    .setListener(listener)
+                    .start();
+        }
+
+        @Override
+        public void animateRemoveImpl(RecyclerView.ViewHolder viewHolder, ViewPropertyAnimatorListener listener) {
+            ViewCompat.animate(itemView)
+                    .translationY(-itemView.getHeight() * 0.3f)
+                    .alpha(0)
+                    .setDuration(300)
+                    .setListener(listener)
+                    .start();
+        }
     }
 
-    public AdapterOnSearch(List<AnswerBrief> list){
+    public AdapterBrief(List<AnswerBrief> list){
         this.mList = list;
     }
 
@@ -51,7 +85,7 @@ public class AdapterOnSearch extends RecyclerView.Adapter<AdapterOnSearch.ViewHo
         if (parent != null && mContext == null){
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_on_search, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_brief, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -63,7 +97,7 @@ public class AdapterOnSearch extends RecyclerView.Adapter<AdapterOnSearch.ViewHo
         holder.briefDescription.setText(answerBrief.getBriefDescription());
         holder.sourceWeb.setText(answerBrief.getSourceWeb());
         holder.date.setText(answerBrief.getData().toString());
-        holder.view.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mContext == null){

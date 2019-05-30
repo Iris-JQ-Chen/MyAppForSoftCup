@@ -29,8 +29,9 @@
         <activity android:name=".activity.CollectionActivity" />
         <activity android:name=".activity.HistoryActivity" />
         <activity android:name=".activity.ChangeInfoActivity" />
-        <activity android:name=".activity.ForgetPwActivity"></activity>
-        <activity android:name=".activity.AnswerListsActivity"></activity>
+        <activity android:name=".activity.ForgetPwActivity" />
+        <activity android:name=".activity.AnswerListsActivity"
+            android:label="@string/list"></activity>
     </application>
 
 </manifest>
