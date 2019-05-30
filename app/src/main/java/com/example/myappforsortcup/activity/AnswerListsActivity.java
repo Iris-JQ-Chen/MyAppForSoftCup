@@ -46,7 +46,9 @@ public class AnswerListsActivity extends AppCompatActivity {
 //            AnswerBrief answerBrief = new AnswerBrief(i,"标题"+i, SomeUtil.RandomDoubleString("概述"+i,7),"网站源"+i,new Date(1000l));
 //            briefList.add(answerBrief);
 //        }
-        AnswerBrief answerBrief = new AnswerBrief(0,"系统部分键不能输入的故障维修","一台采用FANUC 7T系统的数控车床， 在输入加工程序时发现一旦输入Fxxxx时，系统就显示输入无效。","实用维修技术500例",new Date(2500l));
+        AnswerBrief answerBrief = new AnswerBrief(0,"控制系统主板的故障维修","一台工业控制机作为主控制、采用西班牙 $%&’( 系统作为数控部分的\n" +
+                "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
+                "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
         briefList.add(answerBrief);
     }
 

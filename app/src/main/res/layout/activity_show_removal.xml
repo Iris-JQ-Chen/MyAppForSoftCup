@@ -29,7 +29,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:textSize="14sp"
-                    android:text="更换芯片，故障排除"/>
+                    android:text="更换一块新主板后， 主机起动正常， 机床正常
+运转"/>
             </ScrollView>
             <RelativeLayout
                 android:layout_width="match_parent"
