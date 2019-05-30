@@ -72,7 +72,7 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
             }
         });
 
-        ((TextView)findViewById(R.id.question_title_on_show_answer)).setText(title);
+//        ((TextView)findViewById(R.id.question_title_on_show_answer)).setText(title);
         View viewRemoval = View.inflate(this,R.layout.activity_show_removal,null);
         removalTextView = (TextView)viewRemoval.findViewById(R.id.text_remove_fault);
         new Thread(new Runnable() {

@@ -28,6 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
+                    android:text="FANUC 7CT数控系统的MDI/DPL面板由键盘驱动电路、显示器及显示译码电路等部分组成。 所有键盘上的按键均通过74LS07驱动器接到地址总线上，其中F、S、T、M、Q、N这 6 个字母键用同一芯片。进一步检查发现按这 6 个键中任一键，都无输入显示，对该芯片外加+5V电源进行逻辑关系测试，结果发现该芯片损坏；"
                     android:textSize="14sp"/>
             </ScrollView>
             <RelativeLayout

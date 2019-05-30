@@ -42,10 +42,12 @@ public class AnswerListsActivity extends AppCompatActivity {
     }
 
     private void initData(){
-        for (int i = 0;i < 20; i++){
-            AnswerBrief answerBrief = new AnswerBrief(i,"标题"+i, SomeUtil.RandomDoubleString("概述"+i,7),"网站源"+i,new Date(1000l));
-            briefList.add(answerBrief);
-        }
+//        for (int i = 0;i < 20; i++){
+//            AnswerBrief answerBrief = new AnswerBrief(i,"标题"+i, SomeUtil.RandomDoubleString("概述"+i,7),"网站源"+i,new Date(1000l));
+//            briefList.add(answerBrief);
+//        }
+        AnswerBrief answerBrief = new AnswerBrief(0,"系统部分键不能输入的故障维修","一台采用FANUC 7T系统的数控车床， 在输入加工程序时发现一旦输入Fxxxx时，系统就显示输入无效。","实用维修技术500例",new Date(2500l));
+        briefList.add(answerBrief);
     }
 
     private void initView(){

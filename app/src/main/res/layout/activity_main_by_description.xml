@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/search_voice_btn"
+                    android:maxLines="1"
                     android:layout_centerVertical="true"/>
                 <ImageView
                     android:id="@+id/search_voice_btn"
