@@ -60,18 +60,17 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
 
     private void initView(){
         toolbar = (Toolbar)findViewById(R.id.toolbar_on_show_answer);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.md_white_1000));
         toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Toast.makeText(ShowAnswer.this,"sdfjsld",Toast.LENGTH_SHORT).show();
             }
         });
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         ((TextView)findViewById(R.id.question_title_on_show_answer)).setText(title);
         View viewRemoval = View.inflate(this,R.layout.activity_show_removal,null);
@@ -91,16 +90,17 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.faboptions_like:
-                        Log.d("SoftCup","like"+removalTextView.getText().toString());
-                        removalTextView.setText("了速度快放假酸辣粉加适量的飞机上来得快福建省");
-                        Log.d("SoftCup","like"+removalTextView.getText().toString());
+                        Toast.makeText(ShowAnswer.this,"喜欢",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.faboptions_un_like:
+                        Toast.makeText(ShowAnswer.this,"厌恶",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.faboptions_thank:
+                        Toast.makeText(ShowAnswer.this,"感谢",Toast.LENGTH_SHORT).show();
+                        v.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
                         break;
                     case R.id.faboptions_collect:
-                        Toast.makeText(ShowAnswer.this,"点击收藏",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShowAnswer.this,"收藏",Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

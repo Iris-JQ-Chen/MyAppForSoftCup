@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.sliders.SlideInLeftAnimator;
 import com.example.myappforsortcup.R;
@@ -48,9 +50,17 @@ public class AnswerListsActivity extends AppCompatActivity {
 
     private void initView(){
         toolbar = (Toolbar)findViewById(R.id.toolbar_list);
-        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back_white_24dp));
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.md_white_1000));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         layoutManager = new LinearLayoutManager(this);
         adapterBrief = new AdapterBrief(briefList);

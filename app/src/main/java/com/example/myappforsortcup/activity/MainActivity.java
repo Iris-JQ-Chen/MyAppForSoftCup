@@ -62,9 +62,17 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
 
     private void initView(){
         toolbar = (Toolbar)findViewById(R.id.toolbar_main);
-        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_drawer_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer();
+            }
+        });
+        toolbar.setTitleTextColor(getResources().getColor(R.color.md_white_1000));
 
         findViewById(R.id.search_btn_on_main).setOnClickListener(this);
 

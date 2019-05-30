@@ -18,14 +18,10 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.activity.MainActivity;
 import com.example.myappforsortcup.activity.RegisterActivity;
-import com.example.myappforsortcup.activity.SearchActivity;
 import com.example.myappforsortcup.util.SomeUtil;
 import com.jaouan.revealator.Revealator;
 import com.jaouan.revealator.animations.AnimationListenerAdapter;

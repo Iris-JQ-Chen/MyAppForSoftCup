@@ -11,12 +11,8 @@
         android:theme="@style/AppThemeNoActionBar">
         <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".activity.SearchActivity"
-            android:label="@string/search_activity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
             android:name=".activity.ShowAnswer"
-            android:label="" />
+            android:label="@string/app_name" />
         <activity android:name=".animationTest.GravActivity" />
         <activity android:name=".animationTest.LoginActivity">
             <intent-filter>
@@ -31,7 +27,7 @@
         <activity android:name=".activity.ChangeInfoActivity" />
         <activity android:name=".activity.ForgetPwActivity" />
         <activity android:name=".activity.AnswerListsActivity"
-            android:label="@string/list"></activity>
+            android:label="@string/activity_search"></activity>
     </application>
 
 </manifest>

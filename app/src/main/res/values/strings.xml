@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">中软杯</string>
+    <string name="app_name">S-cnc</string>
 
     <string name="username">用户名</string>
     <string name="useremail">用户邮箱</string>
-    <string name="search_activity">搜索</string>
+    <string name="activity_main">S-cnc</string>
+    <string name="activity_search">搜索结果</string>
     <string name="setting_on_drawer">设置</string>
     <string name="other_on_drawer">其他</string>
     <string name="change_language_on_drawer">更换语言</string>

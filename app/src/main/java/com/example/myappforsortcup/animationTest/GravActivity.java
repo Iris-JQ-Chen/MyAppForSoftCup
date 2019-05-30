@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.example.myappforsortcup.R;
-import com.example.myappforsortcup.activity.SearchActivity;
 import com.example.myappforsortcup.fragment.GravSampleFragment;
 
 public class GravActivity extends AppCompatActivity {
@@ -25,7 +24,7 @@ public class GravActivity extends AppCompatActivity {
 
         showView(R.layout.grav);
 
-        final Intent intent = new Intent(GravActivity.this,SearchActivity.class);
+//        final Intent intent = new Intent(GravActivity.this,SearchActivity.class);
 //        Timer timer = new Timer();
 //        TimerTask timerTask = new TimerTask() {
 //            @Override
@@ -35,14 +34,14 @@ public class GravActivity extends AppCompatActivity {
 //        };
 //        timer.schedule(timerTask,1000 * 4);
 
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                startActivity(intent);
-                finish();
-            }
-        };
-        new Handler().postDelayed(r, 1000 * 4);
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//                startActivity(intent);
+//                finish();
+//            }
+//        };
+//        new Handler().postDelayed(r, 1000 * 4);
     }
 
 
