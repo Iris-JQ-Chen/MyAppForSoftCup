@@ -80,9 +80,12 @@ dependencies {
     }
     compile project(':grav')
     //    compile 'com.jph.takephoto:takephoto_library:4.1.0'
-//    compile 'com.jph.takephoto:takephoto_library:4.0.3'{
-//        exclude group: 'com.github.bumptech.glide'
-//    }
+
+    //    compile 'com.jph.takephoto:takephoto_library:4.0.3'{
+
+    //        exclude group: 'com.github.bumptech.glide'
+
+    //    }
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.android.support:recyclerview-v7:25.3.1'
@@ -102,4 +105,6 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.6'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile files('libs/Msc.jar')
+    compile files('libs/Sunflower.jar')
 }
