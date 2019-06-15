@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/faboptions_thank"
-        android:icon="@drawable/ic_favorite_border_black_48dp"
+        android:icon="@drawable/ic_file_download_black_24dp"
         android:title="Download" />
 
     <item

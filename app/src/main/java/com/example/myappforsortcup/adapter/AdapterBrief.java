@@ -41,7 +41,7 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
             title = (TextView)itemView.findViewById(R.id.question_title);
             briefDescription = (TextView)itemView.findViewById(R.id.answer_brief_description);
             sourceWeb = (TextView)itemView.findViewById(R.id.answer_source_web);
-            date = (TextView)itemView.findViewById(R.id.answer_date);
+//            date = (TextView)itemView.findViewById(R.id.answer_date);
         }
 
         @Override
@@ -96,7 +96,7 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
         holder.title.setText(answerBrief.getTitle());
         holder.briefDescription.setText(answerBrief.getBriefDescription());
         holder.sourceWeb.setText(answerBrief.getSourceWeb());
-        holder.date.setText(answerBrief.getData().toString());
+//        holder.date.setText(answerBrief.getData().toString());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
