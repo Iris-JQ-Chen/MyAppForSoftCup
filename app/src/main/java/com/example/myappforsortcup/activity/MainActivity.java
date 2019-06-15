@@ -52,6 +52,9 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity implements OnGestureListener,View.OnClickListener {
     private Drawer drawer;
     private IProfile profile;
@@ -242,6 +245,8 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
      */
     public void initSpeech(final Context context) {
 
+        Toast.makeText(MainActivity.this,"initSpeech",Toast.LENGTH_SHORT).show();
+
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission.RECORD_AUDIO},1);
         }else {
@@ -413,10 +418,9 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.search_btn_on_main:
-//                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
-//                startActivity(intent);
-
-                initSpeech(MainActivity.this);
+                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
+                startActivity(intent);
+//                initSpeech(MainActivity.this);
                 break;
             case R.id.image_key_on_main:
                 if (i == 1){
