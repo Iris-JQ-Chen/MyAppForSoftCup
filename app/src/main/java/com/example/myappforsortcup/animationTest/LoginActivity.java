@@ -20,6 +20,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.EditText;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.activity.ForgetPwActivity;
 import com.example.myappforsortcup.activity.MainActivity;
 import com.example.myappforsortcup.activity.RegisterActivity;
 import com.example.myappforsortcup.util.SomeUtil;
@@ -96,7 +97,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.forget_on_login)
     void ForgetPassword(){
-
+        Intent intent = new Intent(LoginActivity.this, ForgetPwActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.fab)
