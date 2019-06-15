@@ -1,5 +1,9 @@
 package com.example.myappforsortcup.util;
 
+import android.content.ContentResolver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.View;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -14,6 +18,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -88,4 +93,10 @@ public class SomeUtil {
         return dateString;
     }
 
+    public static final Bitmap getBitmap(ContentResolver cr, Uri url) throws FileNotFoundException, IOException {
+        InputStream input = cr.openInputStream(url);
+        Bitmap bitmap = BitmapFactory.decodeStream(input);
+        input.close();
+        return bitmap;
+    }
 }
