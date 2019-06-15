@@ -1,5 +1,8 @@
 package com.example.myappforsortcup.activity;
 
+import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +26,7 @@ import butterknife.BindView;
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
-public class AnswerListsActivity extends AppCompatActivity {
+public class AnswerListsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<AnswerBrief> briefList = new ArrayList<AnswerBrief>();
     private RecyclerView recyclerView;
@@ -31,6 +34,8 @@ public class AnswerListsActivity extends AppCompatActivity {
     private AdapterBrief adapterBrief;
 
     private Toolbar toolbar;
+    private FloatingActionButton floatingActionButton;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class AnswerListsActivity extends AppCompatActivity {
 
         initData();
         initView();
+        initListener();
     }
 
     private void initData(){
@@ -66,6 +72,12 @@ public class AnswerListsActivity extends AppCompatActivity {
             }
         });
 
+
+        floatingActionButton = (FloatingActionButton)findViewById(R.id.fab_on_answer_list);
+        floatingActionButton.setOnClickListener(this);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_on_answer_list);
+
         layoutManager = new LinearLayoutManager(this);
         adapterBrief = new AdapterBrief(briefList);
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view_on_answer_list);
@@ -81,5 +93,31 @@ public class AnswerListsActivity extends AppCompatActivity {
         recyclerView.getItemAnimator().setRemoveDuration(1000);
         recyclerView.getItemAnimator().setMoveDuration(1000);
         recyclerView.getItemAnimator().setChangeDuration(1000);
+    }
+
+    private void initListener() {
+        //下拉刷新
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        adapterBrief.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_on_answer_list:
+                recyclerView.smoothScrollToPosition(0);
+                break;
+        }
     }
 }

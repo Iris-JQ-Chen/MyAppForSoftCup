@@ -60,7 +60,7 @@ public class SomeUtil {
             e1.printStackTrace();
         } catch (DocumentException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

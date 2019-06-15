@@ -53,7 +53,7 @@
                 android:id="@+id/answer_brief_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="回答内容回答内容回答内容回答内容"
+                android:text="回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容"
                 android:textSize="16sp"
                 android:maxLines="2"/>
 
@@ -63,6 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="wrap_content"

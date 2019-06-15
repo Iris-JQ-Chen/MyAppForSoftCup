@@ -40,8 +40,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.CollectionActivity" />
-        <activity android:name=".activity.HistoryActivity" />
+        <activity
+            android:name=".activity.CollectionActivity"
+            android:label="@string/collection_on_drawer"/>
+        <activity
+            android:name=".activity.HistoryActivity"
+            android:label="@string/history_on_drawer"/>
         <activity android:name=".activity.ChangeInfoActivity" />
         <activity android:name=".activity.ForgetPwActivity" />
         <activity
