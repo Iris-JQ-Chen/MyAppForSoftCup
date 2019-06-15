@@ -33,4 +33,7 @@
     <integer name="circle_original_width">1062</integer>
     <integer name="circle_original_height">1062</integer>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
