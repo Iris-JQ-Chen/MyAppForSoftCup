@@ -19,6 +19,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.util.SomeUtil;
 import com.joaquimley.faboptions.FabOptions;
 
 public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -95,9 +96,9 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
                     case R.id.faboptions_un_like:
                         Toast.makeText(ShowAnswer.this,"厌恶",Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.faboptions_thank:
-                        Toast.makeText(ShowAnswer.this,"感谢",Toast.LENGTH_SHORT).show();
-                        v.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+                    case R.id.faboptions_download:
+                        Toast.makeText(ShowAnswer.this,"下载",Toast.LENGTH_SHORT).show();
+                        SomeUtil.textTransformPdf(title+"\n\n\n故障诊断：\n"+diagnosisFaultText+"\n\n故障排除：\n"+removalFaultText,getExternalCacheDir().getPath()+"/"+title+SomeUtil.getTimeForName()+".pdf");
                         break;
                     case R.id.faboptions_collect:
                         Toast.makeText(ShowAnswer.this,"收藏",Toast.LENGTH_SHORT).show();

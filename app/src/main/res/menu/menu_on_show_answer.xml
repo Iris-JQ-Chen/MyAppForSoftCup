@@ -12,7 +12,7 @@
         android:title="UnLike" />
 
     <item
-        android:id="@+id/faboptions_thank"
+        android:id="@+id/faboptions_download"
         android:icon="@drawable/ic_file_download_black_24dp"
         android:title="Download" />
 
