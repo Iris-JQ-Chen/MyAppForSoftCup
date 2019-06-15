@@ -52,7 +52,8 @@
                     android:layout_height="35dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_keyboard_voice_black_24dp"/>
+                    android:src="@drawable/ic_keyboard_voice_black_24dp"
+                    android:clickable="true"/>
             </RelativeLayout>
         </LinearLayout>
 

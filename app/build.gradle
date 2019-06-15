@@ -107,4 +107,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile files('libs/Msc.jar')
     compile files('libs/Sunflower.jar')
+    compile 'com.google.code.gson:gson:2.2.4'
 }
