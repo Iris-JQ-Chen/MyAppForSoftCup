@@ -297,7 +297,6 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     /**
      * 语音对象封装
      */
-
     public class Voice {
 
         public ArrayList<WSBean> ws;
