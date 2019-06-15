@@ -6,28 +6,153 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edit_phone_number_on_fpw"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_on_forget"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryDarkColor"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <Button
-        android:id="@+id/btn_send_verification_code_on_fpw"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="发送短信"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"></RelativeLayout>
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edit_verification_code_on_fpw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/interval3_on_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></RelativeLayout>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/interval1_on_login"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:layout_centerHorizontal="true"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="14dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="27dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="0dp"
+                            android:text="电话"
+                            android:textSize="16sp" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/edit_phone_number_on_fpw"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"/>
+                            <RelativeLayout
+                                android:id="@+id/btn_send_verification_code_on_fpw"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@color/back1">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_marginTop="4dp"
+                                    android:text="发送验证码"/>
+                            </RelativeLayout>
+                        </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="0dp"
+                            android:text="验证码"
+                            android:textSize="16sp" />
+                        <RelativeLayout
+                            android:id="@+id/interval2_on_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="35dp">
+                            <EditText
+                                android:id="@+id/edit_verification_code_on_fpw"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:inputType="textPassword"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></RelativeLayout>
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_next_step_on_fpw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="下一步s"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="210dp"
+                app:layout_anchor="@id/interval3_on_login"
+                app:layout_anchorGravity="bottom|center">
+                <LinearLayout
+                    android:id="@+id/interval4_on_login"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_centerHorizontal="true">
+                    <RelativeLayout
+                        android:id="@+id/btn_next_step_on_fpw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:paddingLeft="44dp"
+                        android:paddingRight="44dp"
+                        android:background="@drawable/btn_login">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="找回密码"
+                            android:textSize="17sp"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"></RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

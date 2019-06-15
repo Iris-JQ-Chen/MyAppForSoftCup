@@ -1,15 +1,21 @@
 package com.example.myappforsortcup.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
@@ -22,28 +28,26 @@ import cn.smssdk.SMSSDK;
 
 public class ForgetPwActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private Toolbar toolbar;
+
     private EditText etPhoneNumber;        // 电话号码
-    private Button sendVerificationCode;   // 发送验证码
+    private RelativeLayout sendVerificationCode;   // 发送验证码
     private EditText etVerificationCode;   // 验证码
-    private Button nextStep;               // 下一步
-
-//    @BindView(R.id.edit_phone_number_on_fpw) EditText etPhoneNumber;
-//    @BindView(R.id.btn_send_verification_code_on_fpw) Button sendVerificationCode;
-//    @BindView(R.id.edit_verification_code_on_fpw) EditText etVerificationCode;
-//    @BindView(R.id.btn_next_step_on_fpw) Button nextStep;
-
+    private RelativeLayout nextStep;               // 下一步
 
     private String phoneNumber;         // 电话号码
     private String verificationCode;    // 验证码
 
     private boolean flag;   // 操作是否成功
 
+    private AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_pw);
 
-        init(); // 初始化控件、注册点击事件
+        initView(); // 初始化控件、注册点击事件
 
         final Context context = ForgetPwActivity.this;                       // context
         final String AppKey = "你的 AppKey";                       // AppKey
@@ -65,49 +69,27 @@ public class ForgetPwActivity extends AppCompatActivity implements View.OnClickL
         SMSSDK.registerEventHandler(eventHandler);     // 注册回调接口
     }
 
-    private void init() {
+    private void initView() {
+        toolbar = (Toolbar)findViewById(R.id.toolbar_on_forget);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.md_white_1000));
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         etPhoneNumber = (EditText) findViewById(R.id.edit_phone_number_on_fpw);
-        sendVerificationCode = (Button) findViewById(R.id.btn_send_verification_code_on_fpw);
+        sendVerificationCode = (RelativeLayout) findViewById(R.id.btn_send_verification_code_on_fpw);
         etVerificationCode = (EditText) findViewById(R.id.edit_verification_code_on_fpw);
-        nextStep = (Button) findViewById(R.id.btn_next_step_on_fpw);
+        nextStep = (RelativeLayout) findViewById(R.id.btn_next_step_on_fpw);
         sendVerificationCode.setOnClickListener(this);
         nextStep.setOnClickListener(this);
     }
-//
-//    @OnClick(R.id.btn_send_verification_code_on_fpw)
-//    void setSendVerificationCode(){
-//        if (!TextUtils.isEmpty(etPhoneNumber.getText())) {
-//            if (etPhoneNumber.getText().length() == 11) {
-//                phoneNumber = etPhoneNumber.getText().toString();
-//                SMSSDK.getVerificationCode("86", phoneNumber); // 发送验证码给号码的 phoneNumber 的手机
-//                etVerificationCode.requestFocus();
-//            }
-//            else {
-//                Toast.makeText(this, "请输入完整的电话号码", Toast.LENGTH_SHORT).show();
-//                etPhoneNumber.requestFocus();
-//            }
-//        } else {
-//            Toast.makeText(this, "请输入电话号码", Toast.LENGTH_SHORT).show();
-//            etPhoneNumber.requestFocus();
-//        }
-//    }
-//
-//    @OnClick(R.id.btn_next_step_on_fpw)
-//    void setNextStep(){
-//        if (!TextUtils.isEmpty(etVerificationCode.getText())) {
-//            if (etVerificationCode.getText().length() == 4) {
-//                verificationCode = etVerificationCode.getText().toString();
-//                SMSSDK.submitVerificationCode("86", phoneNumber, verificationCode);
-//                flag = false;
-//            } else {
-//                Toast.makeText(this, "请输入完整的验证码", Toast.LENGTH_SHORT).show();
-//                etVerificationCode.requestFocus();
-//            }
-//        } else {
-//            Toast.makeText(this, "请输入验证码", Toast.LENGTH_SHORT).show();
-//            etVerificationCode.requestFocus();
-//        }
-//    }
 
     @Override
     public void onClick(View v) {
@@ -163,8 +145,7 @@ public class ForgetPwActivity extends AppCompatActivity implements View.OnClickL
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     // 校验验证码，返回校验的手机和国家代码
                     Toast.makeText(ForgetPwActivity.this, "验证成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ForgetPwActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    showSimpleDialog(new String("123456"));
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                     // 获取验证码成功，true为智能验证，false为普通下发短信
                     Toast.makeText(ForgetPwActivity.this, "验证码已发送", Toast.LENGTH_SHORT).show();
@@ -183,6 +164,26 @@ public class ForgetPwActivity extends AppCompatActivity implements View.OnClickL
             }
         }
     };
+
+    //显示基本Dialog
+    private void showSimpleDialog(String pwd) {
+        builder=new AlertDialog.Builder(this);
+        builder.setTitle("您的密码");
+        builder.setMessage(pwd);
+
+        //监听下方button点击事件
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        //设置对话框是可取消的
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+    }
 
     @Override
     protected void onDestroy() {
