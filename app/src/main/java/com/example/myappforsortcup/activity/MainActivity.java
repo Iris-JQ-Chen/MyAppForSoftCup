@@ -67,6 +67,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements OnGestureListener,View.OnClickListener {
 
     private static final int REQUEST_CODE_CHOOSE = 23;
+    private static final int START_AC_CIA = 100;
 
     private Drawer drawer;
     private IProfile profile;
@@ -204,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
                                     @Override
                                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                                         Intent intent = new Intent(MainActivity.this,ChangeInfoActivity.class);
-                                        startActivity(intent);
+                                        startActivityForResult(intent,START_AC_CIA);
                                         return true;
                                     }
                                 })
@@ -257,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
                 ).build();
     }
 
-    private void initDrawer(Bitmap bitmap){
+    public void initDrawer(Bitmap bitmap){
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
         if (sharedPreferences.getBoolean(LoginActivity.is_Register,false)){
             profile = new ProfileDrawerItem()
@@ -343,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
                                     @Override
                                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                                         Intent intent = new Intent(MainActivity.this,ChangeInfoActivity.class);
-                                        startActivity(intent);
+                                        startActivityForResult(intent,START_AC_CIA);
                                         return true;
                                     }
                                 })
@@ -533,17 +534,35 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Toast.makeText(MainActivity.this,"回调函数",Toast.LENGTH_SHORT);
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
-            List<Uri> result = Matisse.obtainResult(data);
+        switch (requestCode){
+            case REQUEST_CODE_CHOOSE:
+                if (resultCode == RESULT_OK){
+                    List<Uri> result = Matisse.obtainResult(data);
 //            textView.setText(result.toString());
-            Toast.makeText(MainActivity.this,result.get(0).toString(),Toast.LENGTH_SHORT).show();
-            try {
-                drawer.closeDrawer();
-                initDrawer(SomeUtil.getBitmap(getContentResolver(),result.get(0)));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                    Toast.makeText(MainActivity.this,result.get(0).toString(),Toast.LENGTH_SHORT).show();
+                    try {
+                        drawer.closeDrawer();
+                        initDrawer(SomeUtil.getBitmap(getContentResolver(),result.get(0)));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case START_AC_CIA:
+                if (resultCode == RESULT_OK){
+                    Uri resultUri = (Uri) data.getExtras().get("profile_uri");
+                    if (resultUri != null){
+                        try {
+                            initDrawer(SomeUtil.getBitmap(getContentResolver(),resultUri));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                break;
+            default:
         }
     }
 
