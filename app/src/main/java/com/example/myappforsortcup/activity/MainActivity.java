@@ -555,6 +555,7 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
                     Uri resultUri = (Uri) data.getExtras().get("profile_uri");
                     if (resultUri != null){
                         try {
+                            drawer.closeDrawer();
                             initDrawer(SomeUtil.getBitmap(getContentResolver(),resultUri));
                         } catch (IOException e) {
                             e.printStackTrace();
