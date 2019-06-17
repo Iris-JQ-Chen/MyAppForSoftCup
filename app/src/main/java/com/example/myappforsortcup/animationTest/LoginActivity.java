@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PointF;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
@@ -18,11 +19,13 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.activity.ForgetPwActivity;
 import com.example.myappforsortcup.activity.MainActivity;
 import com.example.myappforsortcup.activity.RegisterActivity;
+import com.example.myappforsortcup.dao.UserDao;
 import com.example.myappforsortcup.util.SomeUtil;
 import com.jaouan.revealator.Revealator;
 import com.jaouan.revealator.animations.AnimationListenerAdapter;
@@ -43,9 +46,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.input_name_on_login) EditText inputName;
     @BindView(R.id.input_password_on_login)EditText inputPassword;
-//    @BindView(R.id.login_on_login)TextView btnLogin;
-//    @BindView(R.id.register_on_login)LinearLayout btnRegister;
-//    @BindView(R.id.forget_on_login)TextView btnForget;
 
     private Intent intent = null;
 
@@ -78,13 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         }else if (!name.equals("") && password.equals("")){
             SomeUtil.shakeControl(inputPassword);
         }else {
-            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(LoginActivity.is_Register,true);
-            editor.putString(LoginActivity.user_Name,name);
-            editor.putString(LoginActivity.user_Password,password);
-            editor.commit();
-            send();
+            new LoginTask().execute(name,password);
         }
     }
 
@@ -192,6 +186,30 @@ public class LoginActivity extends AppCompatActivity {
         Fade fade = new Fade();
         fade.setDuration(1000);
         getWindow().setEnterTransition(fade);
+    }
+
+    class LoginTask extends AsyncTask<String,Void,Boolean>{
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            return UserDao.Login(params[0],params[1]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            if (aBoolean){
+                SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
+                SomeUtil.infoSavedLocal(sharedPreferences,true,inputName.getText().toString(),inputPassword.getText().toString(),"");
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putBoolean(LoginActivity.is_Register,true);
+//                editor.putString(LoginActivity.user_Name,inputName.getText().toString());
+//                editor.putString(LoginActivity.user_Password,inputPassword.getText().toString());
+//                editor.commit();
+                send();
+            }else {
+                Toast.makeText(LoginActivity.this,"抱歉登录出错",Toast.LENGTH_SHORT).toString();
+            }
+        }
     }
 
 }

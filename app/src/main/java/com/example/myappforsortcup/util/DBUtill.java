@@ -5,4 +5,9 @@ package com.example.myappforsortcup.util;
  */
 
 public class DBUtill {
+
+    public static final String url_register = "http://192.168.137.1:8080/SoftCup/Register";
+    public static final String url_user_info_add = "";
+    public static final String url_login = "http://192.168.137.1:8080/SoftCup/Login";
+
 }

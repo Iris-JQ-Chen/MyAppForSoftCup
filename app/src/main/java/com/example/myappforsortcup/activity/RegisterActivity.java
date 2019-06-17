@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PointF;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.animationTest.LoginActivity;
+import com.example.myappforsortcup.dao.UserDao;
 import com.example.myappforsortcup.util.SomeUtil;
 import com.jaouan.revealator.Revealator;
 import com.jaouan.revealator.animations.AnimationListenerAdapter;
@@ -98,14 +100,7 @@ public class RegisterActivity extends AppCompatActivity implements PlatformActio
             }
         }
         if (!isEmpty){
-            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.prefs_File, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(LoginActivity.is_Register,true);
-            editor.putString(LoginActivity.user_Name,inputName.getText().toString());
-            editor.putString(LoginActivity.user_Password,inputPassword.getText().toString());
-            editor.putString(LoginActivity.user_Email,inputEmail.getText().toString());
-            editor.commit();
-            send();
+            new RegisterTask().execute(inputName.getText().toString(),inputPassword.getText().toString(),inputEmail.getText().toString());
         }
     }
 
@@ -174,21 +169,16 @@ public class RegisterActivity extends AppCompatActivity implements PlatformActio
 
     //第三方授权登录
     private void authorize(Platform plat) {
-
         if (plat == null) {
             return;
         }
 
-
-        // true不使用SSO授权，false使用SSO授权
-        plat.SSOSetting(false);
+        plat.SSOSetting(false);     // true不使用SSO授权，false使用SSO授权
         plat.setPlatformActionListener(this);
         plat.authorize();
-        //获取用户资料
-        plat.showUser(null);
+        plat.showUser(null);        //获取用户资料
 
-        //判断指定平台是否已经完成授权
-        if(plat.isAuthValid()) {
+        if(plat.isAuthValid()) {    //判断指定平台是否已经完成授权
             String token = plat.getDb().getToken();
             String userId = plat.getDb().getUserId();
             String name = plat.getDb().getUserName();
@@ -196,14 +186,14 @@ public class RegisterActivity extends AppCompatActivity implements PlatformActio
             String headImageUrl = plat.getDb().getUserIcon();
             String platformNname = plat.getDb().getPlatformNname();
             if (userId != null) {
-
-                //已经授权过，直接下一步操作
+                SharedPreferences sharedPreferences = getSharedPreferences(SomeUtil.prefs_File,Context.MODE_PRIVATE);
                 if(platformNname.equals(SinaWeibo.NAME)) {
-                    //微博授权
+
                 } else if(platformNname.equals(QQ.NAME)) {
-                    //QQ授权
+                    SomeUtil.infoSavedLocal(sharedPreferences,true,name,"QQ"+userId,"");
+                    send();
                 } else if(platformNname.equals(Wechat.NAME)) {
-                    //微信授权
+
                 }
                 return;
             }
@@ -274,6 +264,7 @@ public class RegisterActivity extends AppCompatActivity implements PlatformActio
         getWindow().setEnterTransition(fade);
     }
 
+//    函数没用
     @Override
     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
         Toast.makeText(RegisterActivity.this,"onComplete",Toast.LENGTH_SHORT).show();
@@ -344,5 +335,37 @@ public class RegisterActivity extends AppCompatActivity implements PlatformActio
     protected void onDestroy() {
 //        ShareSDK.unregisterPlatform(platDB);//平台注销
         super.onDestroy();
+    }
+
+    class RegisterTask extends AsyncTask<String,Void,Boolean>{
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            switch (params.length){
+                case 3:
+                    return UserDao.Register(params[0],params[1],params[2]);
+                case 2:
+                    return UserDao.Register(params[0],params[1]);
+                default:
+                    return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            if (aBoolean){
+                SharedPreferences sharedPreferences = getSharedPreferences(SomeUtil.prefs_File, Context.MODE_PRIVATE);
+                SomeUtil.infoSavedLocal(sharedPreferences,true,inputName.getText().toString(),inputPassword.getText().toString(),inputEmail.getText().toString());
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putBoolean(SomeUtil.is_Register,true);
+//                editor.putString(SomeUtil.user_Name,inputName.getText().toString());
+//                editor.putString(SomeUtil.user_Password,inputPassword.getText().toString());
+//                editor.putString(SomeUtil.user_Email,inputEmail.getText().toString());
+//                editor.commit();
+                send();
+            }else {
+                Toast.makeText(RegisterActivity.this,"抱歉登录出错",Toast.LENGTH_SHORT).toString();
+            }
+        }
     }
 }

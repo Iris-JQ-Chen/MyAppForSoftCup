@@ -1,6 +1,8 @@
 package com.example.myappforsortcup.util;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -28,6 +30,14 @@ import java.util.Random;
  */
 
 public class SomeUtil {
+
+    private static SharedPreferences sharedPreferences = null;
+    private static SharedPreferences.Editor editor = null;
+    public static final String prefs_File = "user";
+    public static final String is_Register = "isRegister";
+    public static final String user_Name = "userName";
+    public static final String user_Password = "userPassword";
+    public static final String user_Email = "userEmail";
 
     public static String RandomDoubleString(String s, int seed){
         int length = new Random().nextInt(seed);
@@ -99,4 +109,20 @@ public class SomeUtil {
         input.close();
         return bitmap;
     }
+
+    public static void infoSavedLocal(SharedPreferences sperf,boolean is_Register,String user_Name,String user_Password,String user_Email){
+        if (sharedPreferences == null){
+            sharedPreferences = sperf;
+        }
+        if (editor == null){
+            editor = sharedPreferences.edit();
+        }
+        editor.putBoolean(SomeUtil.is_Register,true);
+        editor.putString(SomeUtil.user_Name,user_Name);
+        editor.putString(SomeUtil.user_Password,user_Password);
+        editor.putString(SomeUtil.user_Email,user_Email);
+
+        editor.commit();
+    }
+
 }
