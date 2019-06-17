@@ -1,8 +1,13 @@
 package com.example.myappforsortcup.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -98,7 +103,9 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
                         break;
                     case R.id.faboptions_download:
                         Toast.makeText(ShowAnswer.this,"下载",Toast.LENGTH_SHORT).show();
-                        SomeUtil.textTransformPdf(title+"\n\n\n故障诊断：\n"+diagnosisFaultText+"\n\n故障排除：\n"+removalFaultText,getExternalCacheDir().getPath()+"/"+title+SomeUtil.getTimeForName()+".pdf");
+//                        SomeUtil.textTransformPdf(title+"\n\n\n故障诊断：\n"+diagnosisFaultText+"\n\n故障排除：\n"+removalFaultText,getExternalCacheDir().getPath()+"/"+title+SomeUtil.getTimeForName()+".pdf");
+                        SomeUtil.textTransformPdf("主板的故障"+"\n\n\n故障诊断：\n"+"检查显示器正常，加工程序无误，更换显卡和内存，故障仍然存在，进一步分析判断，绝认识主板出现问题"+"\n\n故障排除：\n"+"更换一块新主板后，主机起动正常，机床正常运转",getExternalCacheDir().getPath()+"/"+title+SomeUtil.getTimeForName()+".pdf");
+                        ShowNotification();
                         break;
                     case R.id.faboptions_collect:
                         Toast.makeText(ShowAnswer.this,"收藏",Toast.LENGTH_SHORT).show();
@@ -121,6 +128,21 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
         }
         title = intentFromSearch.getStringExtra(QUESTION_TITLE);
         briefDescription = intentFromSearch.getStringExtra(ANSWER_BRIEF_DESCRIPTION);
+    }
+
+    private void ShowNotification(){
+        Intent intent = new Intent(this,Main2Activity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,0);
+        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        Notification notification = new NotificationCompat.Builder(this).setContentTitle("下载完成")
+                                                                    .setContentText("下载位置："+" ")
+                                                                    .setWhen(System.currentTimeMillis())
+                                                                    .setSmallIcon(R.drawable.logo)
+                                                                    .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.logo1))
+                                                                    .setContentIntent(pendingIntent)
+                                                                    .setAutoCancel(true)
+                                                                    .build();
+        manager.notify(1,notification);
     }
 
     @Override
@@ -160,8 +182,7 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
     }
 
     @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
-                            float distanceY) {
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         // TODO Auto-generated method stub
         return false;
     }

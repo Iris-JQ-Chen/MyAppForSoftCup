@@ -4,8 +4,10 @@ apply plugin: 'com.mob.sdk'
 MobSDK {
 //    appKey "替换为mob官方申请的appkey"
 //    appSecret "替换为mob官方申请的appkey对应的appSecret"
-    appKey "d580ad56b4b5"
-    appSecret "7fcae59a62342e7e2759e9e397c82bdd"
+//    appKey "d580ad56b4b5"
+//    appSecret "7fcae59a62342e7e2759e9e397c82bdd"
+    appKey "2b6a042d71590"
+    appSecret "6eb7d05a107330c3074842f37177d11b"
     SMSSDK {
         //默认使用GUI，若不使用GUI，通过以下开关关闭
         gui false
@@ -31,14 +33,14 @@ MobSDK {
                 appId "100371282"
                 appKey "aed9b0303e3ed1e27bae87c33761161d"
             }
-//            WechatMoments {
-//                appId "wx4868b35061f87885"
-//                appSecret "64020361b8ec4c99936c0e3999a9f249"
-//            }
-//            WechatFavorite {
-//                appId "wx4868b35061f87885"
-//                appSecret "64020361b8ec4c99936c0e3999a9f249"
-//            }
+            WechatMoments {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
+            WechatFavorite {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
         }
     }
 }
@@ -86,8 +88,6 @@ dependencies {
     //        exclude group: 'com.github.bumptech.glide'
 
     //    }
-    compile files('libs/Msc.jar')
-    compile files('libs/Sunflower.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.android.support:recyclerview-v7:25.3.1'
@@ -108,7 +108,10 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.6'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile files('libs/iTextpdf.jar')
+    compile files('libs/Msc.jar')
+    compile files('libs/Sunflower.jar')
 }

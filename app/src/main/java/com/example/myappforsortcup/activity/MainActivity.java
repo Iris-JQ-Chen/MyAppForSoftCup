@@ -628,9 +628,9 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.search_btn_on_main:
-                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
-                startActivity(intent);
-//                initSpeech(MainActivity.this);
+//                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
+//                startActivity(intent);
+                initSpeech(MainActivity.this);
                 break;
             case R.id.image_key_on_main:
                 if (i == 1){
