@@ -13,6 +13,8 @@ public class AnswerBrief {
     private String briefDescription;
     private String sourceWeb;
     private Date data;
+    private int like;
+    private int view;
 
     public AnswerBrief(int id, String title, String briefDescription, String sourceWeb, Date date){
         this.id = id;
@@ -60,5 +62,21 @@ public class AnswerBrief {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
     }
 }

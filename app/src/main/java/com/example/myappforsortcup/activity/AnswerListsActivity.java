@@ -1,5 +1,6 @@
 package com.example.myappforsortcup.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,7 +17,10 @@ import com.daimajia.androidanimations.library.sliders.SlideInLeftAnimator;
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.adapter.AdapterBrief;
 import com.example.myappforsortcup.bean.AnswerBrief;
+import com.example.myappforsortcup.bean.CNCBriefBean;
 import com.example.myappforsortcup.util.SomeUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -56,6 +60,10 @@ public class AnswerListsActivity extends AppCompatActivity implements View.OnCli
                 "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
                 "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
         briefList.add(answerBrief);
+
+        Intent intent = getIntent();
+        String string = intent.getStringExtra("briefList");
+        briefList = new Gson().fromJson(string,new TypeToken<List<CNCBriefBean>>() {}.getType());
     }
 
     private void initView(){

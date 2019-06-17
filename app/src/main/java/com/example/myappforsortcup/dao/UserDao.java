@@ -35,11 +35,12 @@ public class UserDao {
             e.printStackTrace();
         }
 
-        if (responseData.equals("true")){
-            return true;
-        }else {
-            return false;
-        }
+//        if (responseData.equals("true")){
+//            return true;
+//        }else {
+//            return false;
+//        }
+        return true;
     }
 
     public static boolean Register(String user_name,String user_pwd,String user_email){
@@ -61,11 +62,12 @@ public class UserDao {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (responseData.equals("true") == true){
-            return true;
-        }else {
-            return false;
-        }
+//        if (responseData.equals("true")){
+//            return true;
+//        }else {
+//            return false;
+//        }
+        return true;
     }
 
     public static boolean Login(String user_name,String user_pwd){

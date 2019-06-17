@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -31,6 +32,7 @@ import android.widget.ViewFlipper;
 
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.animationTest.LoginActivity;
+import com.example.myappforsortcup.dao.CNCDao;
 import com.example.myappforsortcup.util.SomeUtil;
 import com.google.gson.Gson;
 import com.iflytek.cloud.RecognizerResult;
@@ -630,7 +632,8 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
             case R.id.search_btn_on_main:
 //                Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
 //                startActivity(intent);
-                initSpeech(MainActivity.this);
+//                initSpeech(MainActivity.this);
+                new SearchBriefCNCTask().execute("短路");
                 break;
             case R.id.image_key_on_main:
                 if (i == 1){
@@ -673,4 +676,21 @@ public class MainActivity extends AppCompatActivity implements OnGestureListener
                 break;
         }
     }
+
+    class SearchBriefCNCTask extends AsyncTask<String,Void,String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            return CNCDao.SearchBrief(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+            Intent intent = new Intent(MainActivity.this,AnswerListsActivity.class);
+            intent.putExtra("briefList",s);
+            startActivity(intent);
+        }
+    }
+
 }
