@@ -12,6 +12,7 @@ import android.view.animation.OvershootInterpolator;
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.adapter.AdapterBrief;
 import com.example.myappforsortcup.bean.AnswerBrief;
+import com.example.myappforsortcup.bean.CNCBriefBean;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<AnswerBrief> briefList = new ArrayList<AnswerBrief>();
+    private List<CNCBriefBean> briefList = new ArrayList<CNCBriefBean>();
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private AdapterBrief adapterBrief;
@@ -44,20 +45,21 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 //            AnswerBrief answerBrief = new AnswerBrief(i,"标题"+i, SomeUtil.RandomDoubleString("概述"+i,7),"网站源"+i,new Date(1000l));
 //            briefList.add(answerBrief);
 //        }
-        AnswerBrief answerBrief = new AnswerBrief(0,"控制系统主板的故障维修","一台工业控制机作为主控制、采用西班牙 $%&’( 系统作为数控部分的\n" +
-                "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
-                "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
-        briefList.add(answerBrief);
 
-        answerBrief = new AnswerBrief(1,"表面磨损","机床切削半径为300mm的圆弧时，圆弧表面粗糙度很高，有明显的刀痕。 ","实用维修技术500例",new Date(2500l));
-        briefList.add(answerBrief);
-
-        answerBrief = new AnswerBrief(2,"声音异常","机床一开机就发出刺耳的噪声，\n" +
-                "并伴随着震动。","实用维修技术500例",new Date(2500l));
-        briefList.add(answerBrief);
-
-        answerBrief = new AnswerBrief(3,"主轴转速无显示。","主轴转速无显示。\n","实用维修技术500例",new Date(2500l));
-        briefList.add(answerBrief);
+//        AnswerBrief answerBrief = new AnswerBrief(0,"控制系统主板的故障维修","一台工业控制机作为主控制、采用西班牙 $%&’( 系统作为数控部分的\n" +
+//                "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
+//                "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
+//        briefList.add(answerBrief);
+//
+//        answerBrief = new AnswerBrief(1,"表面磨损","机床切削半径为300mm的圆弧时，圆弧表面粗糙度很高，有明显的刀痕。 ","实用维修技术500例",new Date(2500l));
+//        briefList.add(answerBrief);
+//
+//        answerBrief = new AnswerBrief(2,"声音异常","机床一开机就发出刺耳的噪声，\n" +
+//                "并伴随着震动。","实用维修技术500例",new Date(2500l));
+//        briefList.add(answerBrief);
+//
+//        answerBrief = new AnswerBrief(3,"主轴转速无显示。","主轴转速无显示。\n","实用维修技术500例",new Date(2500l));
+//        briefList.add(answerBrief);
     }
 
     private void initView(){

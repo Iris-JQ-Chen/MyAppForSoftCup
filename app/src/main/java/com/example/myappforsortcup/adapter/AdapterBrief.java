@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.example.myappforsortcup.R;
 import com.example.myappforsortcup.activity.ShowAnswer;
 import com.example.myappforsortcup.bean.AnswerBrief;
+import com.example.myappforsortcup.bean.CNCBriefBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.holder.AnimateViewHolder;
@@ -26,14 +28,15 @@ import jp.wasabeef.recyclerview.animators.holder.AnimateViewHolder;
 public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> {
 
     private Context mContext = null;
-    private List<AnswerBrief> mList = null;
+    private List<CNCBriefBean> mList = new ArrayList<CNCBriefBean>();
 
     class ViewHolder extends RecyclerView.ViewHolder implements AnimateViewHolder {
         View itemView;
         TextView title;
         TextView briefDescription;
         TextView sourceWeb;
-        TextView date;
+        TextView likeNum;
+        TextView viewNum;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -41,7 +44,8 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
             title = (TextView)itemView.findViewById(R.id.question_title);
             briefDescription = (TextView)itemView.findViewById(R.id.answer_brief_description);
             sourceWeb = (TextView)itemView.findViewById(R.id.answer_source_web);
-//            date = (TextView)itemView.findViewById(R.id.answer_date);
+            likeNum = (TextView)itemView.findViewById(R.id.answer_like_number);
+            viewNum = (TextView)itemView.findViewById(R.id.answer_view_number);
         }
 
         @Override
@@ -76,7 +80,7 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
         }
     }
 
-    public AdapterBrief(List<AnswerBrief> list){
+    public AdapterBrief(List<CNCBriefBean> list){
         this.mList = list;
     }
 
@@ -92,11 +96,12 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final AnswerBrief answerBrief = mList.get(position);
-        holder.title.setText(answerBrief.getTitle());
-        holder.briefDescription.setText(answerBrief.getBriefDescription());
-        holder.sourceWeb.setText(answerBrief.getSourceWeb());
-//        holder.date.setText(answerBrief.getData().toString());
+        final CNCBriefBean briefBean = mList.get(position);
+        holder.title.setText(briefBean.getCncDes());
+        holder.briefDescription.setText(briefBean.getCncDiagnose());
+        holder.sourceWeb.setText(briefBean.getCncSource());
+        holder.likeNum.setText("点赞"+briefBean.getCncLike());
+        holder.viewNum.setText("浏览"+briefBean.getCncView());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,9 +109,9 @@ public class AdapterBrief extends RecyclerView.Adapter<AdapterBrief.ViewHolder> 
                     Log.d("SoftCup","mcontext为空");
                 }
                 Intent intent = new Intent(mContext, ShowAnswer.class);
-                intent.putExtra(ShowAnswer.ANSWER_ID, answerBrief.getId());
-                intent.putExtra(ShowAnswer.QUESTION_TITLE,answerBrief.getTitle());
-                intent.putExtra(ShowAnswer.ANSWER_BRIEF_DESCRIPTION, answerBrief.getBriefDescription());
+                intent.putExtra(ShowAnswer.ANSWER_ID, briefBean.getCncId());
+                intent.putExtra(ShowAnswer.QUESTION_TITLE,briefBean.getCncDes());
+                intent.putExtra(ShowAnswer.ANSWER_BRIEF_DESCRIPTION, briefBean.getCncDiagnose());
                 mContext.startActivity(intent);
             }
         });

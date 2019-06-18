@@ -56,11 +56,13 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_answer);
 
+        preIntent();
+
+
         title = getResources().getString(R.string.title);
         briefDescription = getResources().getString(R.string.briefDescription);
         diagnosisFaultText = getResources().getString(R.string.diagnoseFault);
         removalFaultText = getResources().getString(R.string.removeFault);
-//        preIntent();
         initView();
     }
 

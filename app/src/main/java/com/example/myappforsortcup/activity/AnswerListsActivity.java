@@ -32,7 +32,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class AnswerListsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<AnswerBrief> briefList = new ArrayList<AnswerBrief>();
+    private List<CNCBriefBean> briefList = new ArrayList<CNCBriefBean>();
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private AdapterBrief adapterBrief;
@@ -56,14 +56,15 @@ public class AnswerListsActivity extends AppCompatActivity implements View.OnCli
 //            AnswerBrief answerBrief = new AnswerBrief(i,"标题"+i, SomeUtil.RandomDoubleString("概述"+i,7),"网站源"+i,new Date(1000l));
 //            briefList.add(answerBrief);
 //        }
-        AnswerBrief answerBrief = new AnswerBrief(0,"控制系统主板的故障维修","一台工业控制机作为主控制、采用西班牙 $%&’( 系统作为数控部分的\n" +
-                "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
-                "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
-        briefList.add(answerBrief);
+//        AnswerBrief answerBrief = new AnswerBrief(0,"控制系统主板的故障维修","一台工业控制机作为主控制、采用西班牙 $%&’( 系统作为数控部分的\n" +
+//                "仿形键铣床，一次在加工完某一零件更换新的加工程序时， 突然出现死机现象且无任何\n" +
+//                "报警，强行关机后重新起动系统，此时主机无法起动，同时出现显示器黑屏现象。","实用维修技术500例",new Date(2500l));
+//        briefList.add(answerBrief);
 
         Intent intent = getIntent();
         String string = intent.getStringExtra("briefList");
         briefList = new Gson().fromJson(string,new TypeToken<List<CNCBriefBean>>() {}.getType());
+        Toast.makeText(AnswerListsActivity.this,"briefList",Toast.LENGTH_SHORT).show();
     }
 
     private void initView(){
@@ -111,9 +112,10 @@ public class AnswerListsActivity extends AppCompatActivity implements View.OnCli
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        initData();
-                        adapterBrief.notifyDataSetChanged();
-                        swipeRefreshLayout.setRefreshing(false);
+//                        initData();
+//                        adapterBrief.notifyDataSetChanged();
+//                        swipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(AnswerListsActivity.this,"下拉刷新",Toast.LENGTH_SHORT).show();
                     }
                 }, 1000);
             }
