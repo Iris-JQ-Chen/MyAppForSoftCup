@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -24,7 +25,10 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.myappforsortcup.R;
+import com.example.myappforsortcup.bean.CNCBriefBean;
+import com.example.myappforsortcup.dao.CNCDao;
 import com.example.myappforsortcup.util.SomeUtil;
+import com.google.gson.Gson;
 import com.joaquimley.faboptions.FabOptions;
 
 public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -42,6 +46,7 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
     private TextView diagnosisTextView;
     private TextView removalTextView;
 
+    private CNCBriefBean briefBean = new CNCBriefBean();
     private String title;
     private String briefDescription;
     private String diagnosisFaultText;
@@ -58,12 +63,11 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
 
         preIntent();
 
-
-        title = getResources().getString(R.string.title);
-        briefDescription = getResources().getString(R.string.briefDescription);
-        diagnosisFaultText = getResources().getString(R.string.diagnoseFault);
-        removalFaultText = getResources().getString(R.string.removeFault);
-        initView();
+//        title = getResources().getString(R.string.title);
+//        briefDescription = getResources().getString(R.string.briefDescription);
+//        diagnosisFaultText = getResources().getString(R.string.diagnoseFault);
+//        removalFaultText = getResources().getString(R.string.removeFault);
+//        initView();
     }
 
     private void initView(){
@@ -122,14 +126,20 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
         flipper.addView(LayoutInflater.from(ShowAnswer.this).inflate(R.layout.activity_show_removal,null,false));
     }
 
+    private void initData(String s){
+        Gson gson = new Gson();
+        briefBean = gson.fromJson(s,CNCBriefBean.class);
+    }
+
     private void preIntent(){
         intentFromSearch = getIntent();
         int id = intentFromSearch.getIntExtra(ANSWER_ID,-1);
         if (id == -1){
             finish();
         }
-        title = intentFromSearch.getStringExtra(QUESTION_TITLE);
-        briefDescription = intentFromSearch.getStringExtra(ANSWER_BRIEF_DESCRIPTION);
+        new SearchRetailCNCTask().execute(id+"");
+//        title = intentFromSearch.getStringExtra(QUESTION_TITLE);
+//        briefDescription = intentFromSearch.getStringExtra(ANSWER_BRIEF_DESCRIPTION);
     }
 
     private void ShowNotification(){
@@ -156,7 +166,6 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
         }
         return true;
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -225,6 +234,19 @@ public class ShowAnswer extends AppCompatActivity implements GestureDetector.OnG
             return true;
         }
         return false;
+    }
+
+    class SearchRetailCNCTask extends AsyncTask<String ,Void, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            return CNCDao.SearchRetail(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            initData(s);
+        }
     }
 
 }
